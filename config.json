@@ -1,0 +1,10 @@
+{
+  "PATH":[
+    "/data/biz-amsnew/jboss-5.1.0.GA/server/default/log/ams-memcached-monitor.log"
+  ],
+  "BUF_SIZE":4096,
+  "OFFSET":0,
+  "IP":"10.0.133.36",
+  "PORT":9991,
+  "INTERVAL":1000
+}
