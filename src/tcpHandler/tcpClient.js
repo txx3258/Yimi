@@ -24,7 +24,7 @@ function connectServer(){
   client.connect(PORT,IP,()=>{
     //连接置0
     connectTimes=0;
-    logSys.info('client is connect,port='+PORT+',ip='+ip);
+    logSys.info('client is connect,port='+PORT+',ip='+IP);
   });
 
   //连接次数记录
