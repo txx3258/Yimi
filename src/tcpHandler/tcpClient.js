@@ -2,6 +2,7 @@
 
 //let zlib=require('zlib');
 let net=require('net');
+let client=undefined;
 
 let IP=require('../../config.json').IP;
 let PORT=require('../../config.json').PORT;
@@ -17,7 +18,7 @@ function connectServer(){
   //connectServer start
   logSys.info('connectServer is starting');
 
-  let client=new net.Socket();
+  client=new net.Socket();
   client.setEncoding('utf8');
   
   //连接服务器，如果多次失败则程序终止
