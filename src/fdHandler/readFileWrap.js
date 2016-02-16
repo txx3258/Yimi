@@ -1,0 +1,44 @@
+'use strict';
+
+let readFileFd=require('./readFileFd');
+let readFileStat=require('./readFileStat');
+let BUFSIZE=require('../../config').BUF_SIZE;
+
+function* readFileWrap(path,preOffset,type,index){
+  //读取路径的文件fd
+  let fd=yield readFileFd(path);
+
+  //读取文件信息
+  let stats=yield readFileStat(fd);
+  
+  //读取新增长度
+  let offset=stats.size;
+  let len=offset-preOffset;
+
+  if (preOffset==0||len<=0){
+    //第一次读或正常文件未变化或日期新文件
+    return rtnOpFile(0,0,offset);
+  }
+
+  //防止超过BUFSIZE
+  if (len>BUFSIZE){
+    len=BUFSIZE;
+    preOffset=offset-len;
+  }
+
+  return rtnOpFile(len,offset,preOffset,fd); 
+
+  //返回处理结果
+  function rtnOpFile(len,offset,preOffset,fd){
+    return {
+      "fd":fd,
+      "readBufSize":len,
+      "offset":offset,
+      "preOffset":preOffset,
+      "type":type,
+      "index":index 
+    }
+  }
+}
+
+module.exports=readFileWrap;

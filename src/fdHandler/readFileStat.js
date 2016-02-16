@@ -8,7 +8,7 @@ let fs=require("fs");
 let readFileStat=function(fd){
   return new Promise(function(resolve,reject){
     fs.fstat(fd,function(err,stats){
-      if (!err){
+      if (err){
         reject(new Error('readFileStat is wrong.path='+fd));
       }else{
         resolve(stats);

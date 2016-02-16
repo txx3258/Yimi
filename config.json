@@ -1,10 +1,17 @@
 {
-  "PATH":[
-    "/data/biz-amsnew/jboss-5.1.0.GA/server/default/log/ams-memcached-monitor.log"
+  "PATHS":[{
+      "path":"/Users/soft_tangxiaoxian/Desktop/tmp/Yimi/src/fileHandler/test/ams-memcached-monitor.log",
+      "type":"memcached",
+      "offset":0
+    },{
+      "path": "/Users/soft_tangxiaoxian/Desktop/tmp/Yimi/src/fileHandler/test/amsnew-perf.log",
+      "type": "perf",
+      "offset":0
+    }
   ],
   "BUF_SIZE":4096,
   "OFFSET":0,
-  "IP":"10.0.133.36",
+  "IP":"127.0.0.1",
   "PORT":9991,
-  "INTERVAL":1000
+  "INTERVAL":60000
 }
