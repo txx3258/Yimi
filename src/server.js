@@ -12,7 +12,7 @@ let server=net.createServer(function(socket){
   //接受数据
   socket.on('data',function(buffer){
       buf+=buffer;
-  })；
+  });
 
   //结束
   socket.end('data',function(){
