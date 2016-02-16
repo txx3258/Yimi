@@ -40,7 +40,7 @@ function connectServer(){
   })
 
   //连接关闭
-  client.close('close',()=>{
+  client.on('close',()=>{
     client=undefined;
     logSys.warn('connect is close');
   })
