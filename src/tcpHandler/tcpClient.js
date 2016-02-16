@@ -42,8 +42,8 @@ function connectServer(){
   //连接关闭
   client.close('close',()=>{
     client=undefined;
-    logSys.warn('connect is close')
-  })；
+    logSys.warn('connect is close');
+  })
 }
 
 /**
