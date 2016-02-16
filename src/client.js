@@ -80,10 +80,10 @@ function* bizCode(){
   //处理文件格式
   let fileStrs=yield readStrWraps;
 
+  console.log(fileStrs);
   //发送数据
   sendData(fileStrs);
 
-  console.log(fileStrs);
 }
 
 /*

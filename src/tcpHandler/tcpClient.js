@@ -58,7 +58,7 @@ function sendData(data){
   }
 
   //发送
-  client.write(data);
+  client.write(JSON.stringify(data));
 }
 
 /**
