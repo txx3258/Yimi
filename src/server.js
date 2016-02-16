@@ -15,7 +15,7 @@ let server=net.createServer(function(socket){
   });
 
   //结束
-  socket.end('data',function(){
+  socket.on('end',function(){
     //获取数据
     let data=buf.toString();
     
