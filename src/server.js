@@ -13,22 +13,17 @@ let server=net.createServer(function(socket){
   socket.on('data',function(buffer){
       buf.push(buffer);
       console.log(buffer);
-  }).on('end',function(){
-    let datas=Buffer.conact(buf);
-    buf=[];
-
-    console.log(datas);
-  });
+  })
 
   //结束
   socket.on('end',function(){
     //获取数据
-    let data=buf.toString();
+    //let data=buf.toString();
     
     //buf置空
-    buf='';
+    //buf='';
 
-    console.log(data);
+    console.log('connect is end');
   });
 
 });
