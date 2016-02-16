@@ -7,11 +7,16 @@ let server=net.createServer(function(socket){
   socket.setEncoding('utf8');
   
   //暂存Buffer
-  let buf='';
+  let buf=[];
 
   //接受数据
   socket.on('data',function(buffer){
-      buf+=buffer;
+      buf.push(buffer);
+  }).on('end',function(){
+    let datas=Buffer.conact(buf);
+    buf=[];
+
+    console.log(datas);
   });
 
   //结束
