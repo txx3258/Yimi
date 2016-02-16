@@ -12,6 +12,7 @@ let server=net.createServer(function(socket){
   //接受数据
   socket.on('data',function(buffer){
       buf.push(buffer);
+      console.log(buffer);
   }).on('end',function(){
     let datas=Buffer.conact(buf);
     buf=[];
