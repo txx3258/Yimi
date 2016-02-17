@@ -1,7 +1,6 @@
 'use strict';
 
 let fs=require('fs');
-let BUF_SIZE=config.BUF_SIZE;
 let readIntrFileStr=require('./readIntrFileStr');
 
 function* readStrWrap(wrap){               

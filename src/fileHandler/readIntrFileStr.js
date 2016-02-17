@@ -7,7 +7,7 @@ let config=require('../../config');
  */
 function readIntrFileStr(fd,len,preOffset){
   return new Promise(function(resolve,reject){
-    let buf=new Buffer(BUF_SIZE,'utf8');
+    let buf=new Buffer(config.BUF_SIZE,'utf8');
 
     fs.read(fd,buf,0,len,preOffset,function(err,bytesRead,buffer){
       if (err){
