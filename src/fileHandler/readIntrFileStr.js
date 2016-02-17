@@ -11,7 +11,7 @@ function readIntrFileStr(fd,len,preOffset,buf){
       if (err){
         reject(new Error("readIntrFileStr is wrong.fd="+fd+",len="+len+",preOffset="+preOffset));
       }else{
-        resolve(buffer.toString());
+        resolve(buffer.toString('utf8'));
       }
     })
   });
