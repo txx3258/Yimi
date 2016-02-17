@@ -1,25 +1,5 @@
-[2016-02-16 09:55:32.738] [ERROR] index - error:ReferenceError: logBiz is not defined
-    at /Users/soft_tangxiaoxian/Desktop/tmp/Yimi/src/index.js:64:9
-    at Array.filter (native)
-    at bizCode (/Users/soft_tangxiaoxian/Desktop/tmp/Yimi/src/index.js:62:25)
-    at next (native)
-    at onFulfilled (/Users/soft_tangxiaoxian/Desktop/tmp/Yimi/node_modules/co/index.js:65:19)
-[2016-02-16 09:56:50.915] [INFO] index - doBiz is starting
-[2016-02-16 09:59:01.898] [INFO] index - doBiz is starting
-[2016-02-16 09:59:03.479] [INFO] index - doBiz is finishing
-[2016-02-16 09:59:28.794] [INFO] index - doBiz is starting
-[2016-02-16 09:59:30.810] [INFO] index - doBiz is finishing
-[2016-02-16 09:59:58.793] [INFO] index - doBiz is starting
-[2016-02-16 10:00:06.659] [INFO] index - doBiz is finishing
-[2016-02-16 10:00:28.011] [INFO] index - doBiz is starting
-[2016-02-16 10:01:10.199] [INFO] index - doBiz is finishing
-[2016-02-16 10:05:08.956] [INFO] index - doBiz is starting
-[2016-02-16 10:12:33.178] [INFO] index - doBiz is starting
-[2016-02-16 10:12:34.514] [INFO] index - doBiz is finishing
-[2016-02-16 10:13:01.720] [INFO] index - doBiz is starting
-[2016-02-16 10:13:39.970] [INFO] index - doBiz is finishing
-[2016-02-16 10:16:16.008] [INFO] index - doBiz is starting
-[2016-02-16 10:16:19.251] [INFO] index - doBiz is finishing
-[2016-02-16 10:20:37.954] [INFO] index - doBiz is starting
-[2016-02-16 10:20:39.945] [INFO] index - doBiz is finishing
-[2016-02-16 10:22:41.943] [INFO] index - doBiz is starting
+[2016-02-17 18:06:19.232] [INFO] index - fd offset=5191
+[2016-02-17 18:06:19.232] [INFO] index - fd offset=51370
+[2016-02-17 18:06:21.988] [INFO] index - doBiz is finishing
+[2016-02-17 18:06:25.162] [INFO] index - {"fd":33,"len":0,"offset":5191,"preOffset":5191,"type":"memcached","index":0}
+[2016-02-17 18:06:25.162] [INFO] index - {"fd":34,"len":0,"offset":51370,"preOffset":51370,"type":"perf","index":1}

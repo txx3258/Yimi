@@ -32,7 +32,7 @@ function* readFileWrap(path,preOffset,type,index){
   function rtnOpFile(len,offset,preOffset,fd){
     return {
       "fd":fd,
-      "readBufSize":len,
+      "len":len,
       "offset":offset,
       "preOffset":preOffset,
       "type":type,

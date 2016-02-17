@@ -5,7 +5,7 @@ let readIntrFileStr=require('./readIntrFileStr');
 
 function* readStrWrap(wrap){               
   //从文件中读取新增字符串
-  let intrFileStr=yield readIntrFileStr(wrap.fd,wrap.len,wrap.offset);
+  let intrFileStr=yield readIntrFileStr(wrap.fd,wrap.len,wrap.preOffset);
 
   console.log(intrFileStr);
   let fn=undefined;

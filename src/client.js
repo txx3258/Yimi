@@ -51,7 +51,7 @@ function* bizCode(){
       //全局变量，记录上一次处理的位置
       paths[wrap.index].offset=wrap.offset;
 
-      if (wrap.readBufSize==0){
+      if (wrap.len==0){
         logBiz.info('file no change or file has rename');
         return false;
       }
