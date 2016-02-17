@@ -3,3 +3,10 @@
 [2016-02-17 18:06:21.988] [INFO] index - doBiz is finishing
 [2016-02-17 18:06:25.162] [INFO] index - {"fd":33,"len":0,"offset":5191,"preOffset":5191,"type":"memcached","index":0}
 [2016-02-17 18:06:25.162] [INFO] index - {"fd":34,"len":0,"offset":51370,"preOffset":51370,"type":"perf","index":1}
+[2016-02-17 18:07:40.359] [INFO] index - doBiz is starting
+[2016-02-17 18:11:35.229] [INFO] index - fd offset=5191
+[2016-02-17 18:11:35.229] [INFO] index - fd offset=51370
+[2016-02-17 18:11:37.101] [INFO] index - doBiz is finishing
+[2016-02-17 18:12:48.665] [INFO] index - {"fd":32,"len":0,"offset":5191,"preOffset":5191,"type":"memcached","index":0}
+[2016-02-17 18:12:48.666] [INFO] index - {"fd":35,"len":1024,"offset":51370,"preOffset":50346,"type":"perf","index":1}
+[2016-02-17 18:16:33.849] [INFO] index - doBiz is starting
