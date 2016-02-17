@@ -17,7 +17,7 @@ function* readFileWrap(path,preOffset,type,index){
 
   if (preOffset==0||len<=0){
     //第一次读或正常文件未变化或日期新文件
-    return rtnOpFile(0,0,offset);
+    return rtnOpFile(0,offset,preOffset,fd);
   }
 
   //防止超过BUFSIZE
