@@ -1,17 +1,19 @@
 'use strict';
 
 let fs=require('fs');
-
+let config=require('../../config');
 /**
  *读取文件增加文件
  */
-function readIntrFileStr(fd,len,preOffset,buf){
+function readIntrFileStr(fd,len,preOffset){
   return new Promise(function(resolve,reject){
+    let buf=new Buffer(BUF_SIZE,'utf8');
+
     fs.read(fd,buf,0,len,preOffset,function(err,bytesRead,buffer){
       if (err){
         reject(new Error("readIntrFileStr is wrong.fd="+fd+",len="+len+",preOffset="+preOffset));
       }else{
-        resolve(buffer.toString('utf8'));
+        resolve(buffer.toString('utf8',0,len));
       }
     })
   });
