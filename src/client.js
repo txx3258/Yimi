@@ -32,6 +32,7 @@ let paths=config.PATHS;
 function* bizCode(){
   //读取新增文件信息
   let readFileWraps=paths.map(function(item,index){
+    logIndex.info('fd offset='+item.offset);
     return readFileWrap(item.path,item.offset,item.type,index);
   });
 
