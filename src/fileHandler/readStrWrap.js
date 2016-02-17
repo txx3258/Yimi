@@ -10,6 +10,7 @@ function* readStrWrap(wrap){
   let buf=new Buffer(BUF_SIZE);
   let intrFileStr=yield readIntrFileStr(wrap.fd,wrap.len,wrap.offset,buf);
 
+  console.log(intrFileStr);
   let fn=undefined;
   //处理字符串
   switch (wrap.type){
