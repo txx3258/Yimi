@@ -2,6 +2,7 @@
 
 let net=require('net');
 let PORT=require('../config').PORT;
+let addMongoDB=require('./mongoHandler/mongoWrap');
 
 let server=net.createServer(function(socket){
   socket.setEncoding('utf8');
@@ -13,7 +14,10 @@ let server=net.createServer(function(socket){
   socket.on('data',function(buffer){
       buf.push(buffer);
       console.log(buffer);
-  })
+
+      //添加到数据库
+      addMongoDB(buffer);
+  });
 
   //结束
   socket.on('end',function(){

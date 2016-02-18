@@ -1,3 +1,34 @@
 gc.log=>var reg=/(\d\d\d\d-\d\d-\d\d)T(\d\d:\d\d:\d\d).*?\[(ParNew: .*?\),(.*?)secs)\]/g
 
 memcached.log=>var reg=/dump_stats:({.*?})/g 
+
+let mongoose=require('mongoose');
+let Schema=mongoose.Schema;
+
+var Chart=new Schema({
+  x:String,
+  y:String,
+  z:String,
+  l:String,
+  r:String,
+  t:String
+});
+
+Chart.methods.addPoint=function(point,callback){
+  //赋值
+  this.x=point.x;
+  this.y=point.y;
+  this.z=point.z;
+  this.l=point.l;
+  this.r=point.r;
+  this.t=point.t;
+
+  //保存
+  this.save(callback);
+};
+
+function Charts(collectName){
+  return mongoose.model(collectName,Chart)
+}
+
+module.exports=Charts;
