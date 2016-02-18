@@ -23,7 +23,7 @@ function* readStrWrap(wrap){
   }
 
   if (!fn){
-    return;
+    return null;
   }
   
   return fn(intrFileStr,wrap.bizCode);
