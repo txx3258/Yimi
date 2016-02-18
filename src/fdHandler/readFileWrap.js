@@ -4,15 +4,16 @@ let readFileFd=require('./readFileFd');
 let readFileStat=require('./readFileStat');
 let BUFSIZE=require('../../config').BUF_SIZE;
 
-function* readFileWrap(path,preOffset,type,index){
+function* readFileWrap(item,index){
   //读取路径的文件fd
-  let fd=yield readFileFd(path);
+  let fd=yield readFileFd(item.path);
 
   //读取文件信息
   let stats=yield readFileStat(fd);
   
   //读取新增长度
   let offset=stats.size;
+  let preOffset=item.offset;
   let len=offset-preOffset;
 
   if (preOffset==0||len<=0){
@@ -31,11 +32,12 @@ function* readFileWrap(path,preOffset,type,index){
   //返回处理结果
   function rtnOpFile(len,offset,preOffset,fd){
     return {
-      "fd":fd,
       "len":len,
       "offset":offset,
       "preOffset":preOffset,
-      "type":type,
+      "type":item.type,
+      "fd":fd,
+      "bizCode":item.bizCode,
       "index":index 
     }
   }

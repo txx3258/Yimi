@@ -3,6 +3,10 @@
 let fs=require('fs');
 let readIntrFileStr=require('./readIntrFileStr');
 
+let gcFileHandler=require('./gcFileHandler');
+let perfFileHandler=require('./perfFileHandler');
+
+
 function* readStrWrap(wrap){               
   //从文件中读取新增字符串
   let intrFileStr=yield readIntrFileStr(wrap.fd,wrap.len,wrap.preOffset);
@@ -11,9 +15,10 @@ function* readStrWrap(wrap){
   let fn=undefined;
   //处理字符串
   switch (wrap.type){
-    case 'perf':fn=require('./perfFileHandler');break;
+    case 'perf':fn=perfFileHandler;break;
     case 'memcached':fn=require('./memcachedHandler');break;
     case 'dal':fn=require('./dalFileHandler');break;
+    case 'gc':fn=gcFileHandler;break;
     case 'rpc':fn=require('./rpcFileHandler');break;
   }
 
@@ -21,7 +26,7 @@ function* readStrWrap(wrap){
     return;
   }
   
-  return fn(intrFileStr)
+  return fn(intrFileStr,wrap.bizCode);
 }
 
 module.exports=readStrWrap;

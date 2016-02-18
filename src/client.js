@@ -9,6 +9,14 @@ let logIndex=myLog4js.logIndex,
     logSys=myLog4js.logSys;
 
 /*
+ *引入异步代码处理块
+ */
+let readFileWrap=require('./fdHandler/readFileWrap');
+let readStrWrap=require('./fileHandler/readStrWrap');
+let sendData=require('./tcpHandler/tcpClient');
+let paths=config.PATHS;
+
+/*
  *业务处理
  */
 function doBiz(){
@@ -20,20 +28,11 @@ function doBiz(){
   logIndex.info('doBiz is finishing');
 }
 
-/*
- *引入异步代码处理块
- */
-let readFileWrap=require('./fdHandler/readFileWrap');
-let readStrWrap=require('./fileHandler/readStrWrap');
-let sendData=require('./tcpHandler/tcpClient');
-let paths=config.PATHS;
-
-
 function* bizCode(){
   //读取新增文件信息
   let readFileWraps=paths.map(function(item,index){
     logIndex.info('fd offset='+item.offset);
-    return readFileWrap(item.path,item.offset,item.type,index);
+    return readFileWrap(item,index);
   });
 
   if (readFileWraps.length==0){
@@ -66,14 +65,19 @@ function* bizCode(){
 
   //处理文件格式
   let fileStrs=yield readStrWraps;
-  if (fileStrs.length==0){
+
+  //除去空文件内容
+  fileStrs.filter(function(item){
+    if (item){
+      return true;
+    }
+
     logBiz.info('no data');
-    return;
-  }
+    return false;
+  });
   console.log(fileStrs);
   //发送数据
   sendData(fileStrs);
-
 }
 
 /*
@@ -97,6 +101,7 @@ function main(){
 }
 
 main();
+
 /*
  *定期处理
  */
