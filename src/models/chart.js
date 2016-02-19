@@ -2,6 +2,8 @@
 
 let mongoose=require('mongoose');
 let Schema=mongoose.Schema;
+let logBiz=require('../myLog4js').logBiz;
+let logSys=require('./myLog4js').logSys;
 
 /*
  *模式
@@ -59,7 +61,11 @@ function addDB(points){
 
     its.forEach(function(item){
       let collectName=item.z;
-      db.model(collectName,Chart).addPoints(item);
+      db.model(collectName,Chart).create(Point(item),function(err){
+        if (err){
+          logSys.warn('mongoose create is err.err='+err+",item="+item);
+        }
+      });
     })
   })
 

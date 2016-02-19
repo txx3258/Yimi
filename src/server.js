@@ -21,6 +21,10 @@ let server=net.createServer(function(socket){
 
   //处理数据
   socket.on('done',function(){
+    if (buf.length==0){
+      return;
+    }
+
     //添加到数据库
     insertMongoDB(buf);
     
