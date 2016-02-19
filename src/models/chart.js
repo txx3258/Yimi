@@ -49,10 +49,16 @@ var Point=function(point){
  */
 function addDB(points){
   console.log("doing:"+JSON.stringify(points))
+  if (points.length==1){
+    logBiz.warn('add DB points is []');
+    return;
+  }
 
-  points.forEach(function(item){
-    let collectName=item.z;
-    db.model(collectName,Chart).addPoints(item);
+  points.forEach(function(items){
+    items.forEach(function(item){
+      let collectName=item.z;
+      db.model(collectName,Chart).addPoints(item);
+    })
   })
 
   //批量执行
