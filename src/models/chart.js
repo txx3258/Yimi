@@ -48,6 +48,7 @@ var Point=function(point){
  *批量写入数据库
  */
 function addDB(points){
+  console.log("doing:"+JSON.stringify(points))
 
   points.forEach(function(item){
     let collectName=item.z;
