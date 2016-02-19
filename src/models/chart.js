@@ -55,7 +55,9 @@ function addDB(points){
   }
 
   points.forEach(function(items){
-    items.forEach(function(item){
+    let its=JSON.parse(items);
+
+    its.forEach(function(item){
       let collectName=item.z;
       db.model(collectName,Chart).addPoints(item);
     })
