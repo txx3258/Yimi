@@ -22,7 +22,7 @@ let server=net.createServer(function(socket){
   //处理数据
   socket.on('done',function(){
     //添加到数据库
-    insertMongoDB(buffer);
+    insertMongoDB(buf);
     
     // 单线程确保安全性
     buf=[];
