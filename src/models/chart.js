@@ -23,7 +23,8 @@ var addPoint=function(point){
     z:point.z,
     l:point.l,
     r:point.r,
-    t:point.t
+    t:point.t,
+    d:new Date()
   }
 };
 
