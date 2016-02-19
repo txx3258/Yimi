@@ -51,7 +51,7 @@ var Point=function(point){
  */
 function addDB(points){
   console.log("doing:"+JSON.stringify(points))
-  if (points.length==1){
+  if (points.length==0){
     logBiz.warn('add DB points is []');
     return;
   }
