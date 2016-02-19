@@ -3,7 +3,7 @@
 let mongoose=require('mongoose');
 let Schema=mongoose.Schema;
 let logBiz=require('../myLog4js').logBiz;
-let logSys=require('./myLog4js').logSys;
+let logSys=require('../myLog4js').logSys;
 
 /*
  *模式
