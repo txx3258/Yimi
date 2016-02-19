@@ -18,7 +18,7 @@ function connectMongo(){
 
     if (err){
       connectTimes=0;
-      logSys.warn('mongodb cannot connect!')i;
+      logSys.warn('mongodb cannot connect!');
       return;
     }
   
