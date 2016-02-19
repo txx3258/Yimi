@@ -13,7 +13,7 @@ function memcachedHandler(str,type){
       result.push({
         "x":date.toLocaleTimeString(),
         'y':rn.maxCost,
-        'z':rn.bizCode+"_"+rn.systemCode+"_"+rn.envCode+"\n"+rn.roleName+":"+rn.methName+"\n"+rn.serverHost,
+        'z':rn.bizCode+"_"+rn.systemCode+"_"+rn.envCode+"@"+rn.roleName+":"+rn.methName+"@"+rn.serverHost,
         'l':date.toLocaleDateString(),
         'r':'ms',
         't':JSON.stringify(rn.costGroup)
