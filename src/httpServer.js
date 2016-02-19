@@ -7,7 +7,7 @@ var config=require('../config');
 var logSys=require('./myLog4js').logSys;
 
 var chart=require('./expressHandler/router/chart');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'expressHandler/views'));
 app.set('view engine', 'ejs');
 
 //接口
