@@ -32,7 +32,7 @@ function addDB(datas){
   if (!global.db){
     //连接数据库
     connectMongo();
-    logBiz.warn(JSON.stringify(point));
+    logBiz.warn(JSON.stringify(datas));
     return;
   }
 
