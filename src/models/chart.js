@@ -12,10 +12,26 @@ var Chart=new Schema({
   z:String,
   l:String,
   r:String,
-  t:String
+  t:String,
+  d:Date,
 });
 
-var addPoint=function(point){
+/*
+ *model写入
+ */
+Chart.methods.addPoints=function(point,callback){
+    this.x=point.x;
+    this.y=point.y;
+    this.z=point.z;
+    this.l=point.l;
+    this.r=point.r;
+    this.t=point.t;
+    this.d=new Date();
+
+    this.save(callback);
+}
+
+var Point=function(point){
   //赋值
   return {
     x:point.x,
@@ -31,14 +47,14 @@ var addPoint=function(point){
 /*
  *批量写入数据库
  */
-function addDB(collectName,points){
-  var bulk=db.model(collectName,Chart).initializeOrderedBulkOp();
+function addDB(points){
+
   points.forEach(function(item){
-    bulk.insert(addPoint(item));
+    db.model(collectName,Chart).addPoints(item);
   })
 
   //批量执行
-  bulk.execute();
+  //bulk.execute();
 };
 
 module.exports=addDB;
