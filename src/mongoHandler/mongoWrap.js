@@ -29,7 +29,7 @@ function connectMongo(){
  *添加入数据库
  */
 function addDB(datas){
-  if (!db){
+  if (!global.db){
     //连接数据库
     connectMongo();
     logBiz.warn(JSON.stringify(point));
