@@ -7,11 +7,17 @@
       "path": "/Users/soft_tangxiaoxian/Desktop/tmp/Yimi/src/fileHandler/test/amsnew-perf.log",
       "type": "perf",
       "offset":0
+    },{
+      "path":"/gc.log",
+      "type":"gc",
+      "offset":0,
+      "bizCode":"applist"
     }
   ],
   "BUF_SIZE":4096,
   "OFFSET":0,
   "IP":"127.0.0.1",
   "PORT":9991,
+  "MONGO_URI":"mongodb://user:pass@IP:port/database",
   "INTERVAL":60000
 }

@@ -1,13 +1,14 @@
 'use strict';
 
 let mongoose=require("mongoose");
+let config=require("../../config");
 let uri=config.MONGO_URI;
 let logSys=require('../myLog4js').logSys;
 let logBiz=require('../myLog4js').logBiz;
 let connectTimes=0;
 
 //引入model 
-let addToMongoDB=require('../mongoHandler/chart');
+let addToMongoDB=require('../models/chart');
 
 function connectMongo(){
   mongoose.connect(uri,function(err){
@@ -27,7 +28,7 @@ function connectMongo(){
 /*
  *添加入数据库
  */
-function addDB(data){
+function addDB(datas){
   if (!db){
     //连接数据库
     connectMongo();
@@ -36,17 +37,21 @@ function addDB(data){
   }
 
   try{ 
-    var points=JSON.parse(data);
-    let collectName=point.z; 
+    //数据库写入缓慢时，可能接收到多份数据
+    datas.forEach(function(data){
+      var points=JSON.parse(data);
+      let collectName=point.z; 
 
-    //插入数据
-    addToMongoDB(collectName,points);
+      //插入数据
+      addToMongoDB(collectName,points);
+    })
+
   }catch(e){
     logSys.warn('add mongodb err,e='+e);
     logBiz.warn('data parse json wrong:'+data);
   }
 }
 
-module.exports=addPoint(point);
+module.exports=addDB;
 
 

@@ -2,7 +2,7 @@
 
 let net=require('net');
 let PORT=require('../config').PORT;
-let addMongoDB=require('./mongoHandler/mongoWrap');
+let insertMongoDB=require('./mongoHandler/mongoWrap');
 
 let server=net.createServer(function(socket){
   socket.setEncoding('utf8');
@@ -14,18 +14,22 @@ let server=net.createServer(function(socket){
   socket.on('data',function(buffer){
       buf.push(buffer);
       console.log(buffer);
-
-      //添加到数据库
-      addMongoDB(buffer);
+      
+      //事件机制，写入数据库同时接收数据
+      socket.emit('done');
   });
+
+  //处理数据
+  socket.on('done',function(){
+    //添加到数据库
+    insertMongoDB(buffer);
+    
+    // 单线程确保安全性
+    buf=[];
+  })
 
   //结束
   socket.on('end',function(){
-    //获取数据
-    //let data=buf.toString();
-    
-    //buf置空
-    //buf='';
 
     console.log('connect is end');
   });
