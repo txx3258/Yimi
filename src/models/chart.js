@@ -50,6 +50,7 @@ var Point=function(point){
 function addDB(points){
 
   points.forEach(function(item){
+    let collectName=item.z;
     db.model(collectName,Chart).addPoints(item);
   })
 
