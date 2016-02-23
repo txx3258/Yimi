@@ -32,8 +32,8 @@ function chartAPI(req,res){
  */
 function* handleResult(collectName,queryName,si,count,connectMongo){
   //异步：连接mongo
-  let connectMongo=yield connectMongo();
-  if (!connectMongo){
+  let isCon=yield connectMongo();
+  if (!isCon){
     throw new Error('can not connect mongo');
   }
   //异步: 查询mongo
