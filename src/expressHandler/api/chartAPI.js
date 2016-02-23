@@ -26,8 +26,8 @@ function chartAPI(req,res){
 
   //断开数据库连接
   function remove(collectName){
-    let md=dbModel(collectName)
-    mongoDisconn(md);
+    //  let md=dbModel(collectName)
+    //  mongoDisconn(md);
   }
   //错误处理
   function onerror(err){
