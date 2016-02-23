@@ -17,7 +17,7 @@ app.get('/',function(req,res){
   res.send('hello world!!!');
 });
 
-app.get('/api',chart);
+app.use('/api',chart);
 
 //catch 404
 app.use(function(req,res,next){
