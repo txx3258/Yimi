@@ -5,7 +5,7 @@ let Schema=mongoose.Schema;
 let logBiz=require('../myLog4js').logBiz;
 let logSys=require('../myLog4js').logSys;
 
-let connectMongo=require('../../mongoHandler/mongoConnect');
+let connectMongo=require('../mongoHandler/mongoConnect');
 /*
  *模式
  */
