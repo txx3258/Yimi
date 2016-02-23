@@ -5,6 +5,7 @@ let Schema=mongoose.Schema;
 let logBiz=require('../myLog4js').logBiz;
 let logSys=require('../myLog4js').logSys;
 
+let connectMongo=require('../../mongoHandler/mongoConnect');
 /*
  *模式
  */
@@ -50,7 +51,6 @@ var Point=function(point){
  *批量写入数据库
  */
 function addDB(points){
-  console.log("doing:"+JSON.stringify(points))
   if (points.length==0){
     logBiz.warn('add DB points is []');
     return;
@@ -68,9 +68,50 @@ function addDB(points){
       });
     })
   })
-
-  //批量执行
-  //bulk.execute();
 };
 
-module.exports=addDB;
+/**
+ *查询数据
+ */
+function queryDB(collectName,queryName,si,count){
+  if (!collectName){
+    logBiz.warn('queryDB:collectName is null');
+    return;
+  }
+
+  if (!queryName){
+    logBiz.warn('queryDB:queryName is null');
+  }
+
+  si=(!si?0:si);
+  count=(!count?50:count);
+
+  if (count>1000){
+    count=1000;
+  }
+
+  //find(),查询条件
+  if (typeof queryName!='object'){
+    queryName='';
+  }
+
+  var query=db.model(collectName,Chart).find(queryName);
+
+  //sort({id:}),倒序
+  query.sort({id:-1}).skip(si).limit(count);
+
+  return new Promise(function(resolve,reject){
+    //exec,执行
+    query.exec(function(err,result){
+      if (err){
+        logBiz.warn('queryDB:exec is err.err='+err);
+        reject(err);
+      }else{
+        resolve(result);
+      }
+    }) 
+  });
+}
+
+module.exports.addDB=addDB;
+module.exports.queryDB=queryDB;
