@@ -18,7 +18,7 @@ function chartAPI(req,res){
   let count=query.count;
 
   //代码执行
-  co(handleResult(collectName,queryName,si,count,connectMongo))  
+  co(handleResult(collectName,queryName,si,count))  
   .then(function(result){
     res.json(result);
     remove(collectName);
@@ -39,12 +39,13 @@ function chartAPI(req,res){
 /*
  *处理结果
  */
-function* handleResult(collectName,queryName,si,count,connectMongo){
+function* handleResult(collectName,queryName,si,count){
   //异步：连接mongo
   let isCon=yield connectMongo();
   if (!isCon){
     throw new Error('can not connect mongo');
   }
+
   //异步: 查询mongo
   let datas=yield queryDB(collectName,queryName,si,count);
   

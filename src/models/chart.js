@@ -98,7 +98,7 @@ function queryDB(collectName,queryName,si,count){
   var query=db.model(collectName,Chart).find(queryName);
 
   //sort({id:}),倒序
-  query.sort({id:-1}).skip(si).limit(count);
+  query.sort({id:-1});//.skip(si).limit(count);
 
   return new Promise(function(resolve,reject){
     //exec,执行
