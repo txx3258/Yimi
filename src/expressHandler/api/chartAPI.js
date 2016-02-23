@@ -16,8 +16,7 @@ function chartAPI(req,res){
   let count=query.count;
 
   //代码执行
-  co(handleResult(collectName,queryName,si,count,connectMongo));
-  
+  co(handleResult(collectName,queryName,si,count,connectMongo))  
   .then(function(result){
     res.json(result);
   }).catch(onerror);
