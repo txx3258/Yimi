@@ -11,7 +11,7 @@ let logSys=require('../myLog4js').logSys;
  */
 function connectMongo(){
   return new Promise(function(resolve,reject){
-    if (db){
+    if (global.db){
       resolve(true);
       return;
     }

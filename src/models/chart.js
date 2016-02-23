@@ -113,5 +113,13 @@ function queryDB(collectName,queryName,si,count){
   });
 }
 
+/**
+ *返回dbModel
+ */
+function dbModel(collectName){
+  return db.model(collectName,Chart);
+}
+
+module.exports.dbModel=dbModel;
 module.exports.addDB=addDB;
 module.exports.queryDB=queryDB;

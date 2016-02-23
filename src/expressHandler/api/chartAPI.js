@@ -2,8 +2,10 @@
 
 let co=require('co');
 let connectMongo=require('../../mongoHandler/mongoConnect');
-let queryDB=require('../../models/chart').queryDB;
-
+let model=require('../../models/chart')
+let queryDB=model.queryDB;
+let dbModel=model.dbModel;
+let mongoDisconn=require('../../mongoHandler/mongoDisconn');
 /*
  *访问图形数据API
  */
@@ -19,10 +21,17 @@ function chartAPI(req,res){
   co(handleResult(collectName,queryName,si,count,connectMongo))  
   .then(function(result){
     res.json(result);
+    remove(collectName);
   }).catch(onerror);
 
+  //断开数据库连接
+  function remove(collectName){
+    let md=dbModel(collectName)
+    mongoDisconn(md);
+  }
   //错误处理
   function onerror(err){
+    remove(collectName);
     res.status(500).send(err)
   }
 }
