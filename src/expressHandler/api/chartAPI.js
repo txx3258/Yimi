@@ -14,11 +14,18 @@ function chartAPI(req,res){
   let queryName=query.queryName;
   let si=query.si;
   let count=query.count;
-  let startDate=query.startDate;
-  let endDate=query.endDate;
 
-  let result=handleResult(collectName,queryName,si,count,startDate,endDate);
-  res.json(result);
+  //代码执行
+  co(handleResult(collectName,queryName,si,count))
+  
+  .then(function(result){
+    res.json(result);
+  }).catch(onerror);
+
+  //错误处理
+  function onerror(err){
+    res.status(500).send(err)
+  }
 }
 
 /*
@@ -27,6 +34,9 @@ function chartAPI(req,res){
 function* handleResult(collectName,queryName,si,count){
   //异步：连接mongo
   let connectMongo=yield connectMongo;
+  if (!connectMongo){
+    throw new Error('can not connect mongo');
+  }
   //异步: 查询mongo
   let datas=yield queryDB(collectName,queryName,si,count);
   
