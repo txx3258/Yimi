@@ -13,7 +13,7 @@ function chartAPI(req,res){
   let query=req.query;
 
   let collectName=query.collectName;
-  let queryName=query.queryName;
+  let queryName=JSON.parse(query.queryName);
   let si=query.si;
   let count=query.count;
 

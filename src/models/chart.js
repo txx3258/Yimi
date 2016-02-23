@@ -92,7 +92,7 @@ function queryDB(collectName,queryName,si,count){
 
   //find(),查询条件
   if (typeof queryName!='object'){
-    queryName='';
+    queryName={};
   }
 
   var query=db.model(collectName,Chart).find(queryName);
