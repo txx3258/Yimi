@@ -62,13 +62,13 @@ function* handleResult(collectName,queryName,si,count,connectMongo){
     desc=datas[0].z;
   }
 
-  return buildResult(labels,data,left,right,tips,desc);
+  return buildResult(labels,data,left,right,tip,desc);
 }
 
 /*
  *组装返回结果
  */
-function buildResult(labels,data,left,right,tips,desc){
+function buildResult(labels,data,left,right,tip,desc){
   var data = {
     labels: labels,
     datasets: [{
@@ -83,7 +83,7 @@ function buildResult(labels,data,left,right,tips,desc){
     }],
 	  left:left,
 	  right:right,
-	  tip:tips,
+	  tip:tip,
 	  desc:desc
   };
 
