@@ -6,6 +6,8 @@ var router=express.Router();
 let chartAPI=require('../api/chartAPI');
 
 router.get('/chart',function(req,res,next){
+  console.log('starting...');
+
   let query=req.query;
   
   //参数验证
