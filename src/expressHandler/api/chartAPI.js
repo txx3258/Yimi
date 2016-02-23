@@ -33,7 +33,7 @@ function chartAPI(req,res){
  */
 function* handleResult(collectName,queryName,si,count){
   //异步：连接mongo
-  let connectMongo=yield connectMongo;
+  let connectMongo=yield connectMongo();
   if (!connectMongo){
     throw new Error('can not connect mongo');
   }
