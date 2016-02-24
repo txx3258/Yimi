@@ -17,10 +17,10 @@ function chartAPI(req,res){
   let si=query.si;
   let count=query.count;
 
-  var cn=parseInt(count),
-    count=isNaN(cn)?50:cn;
-  var s=parseInt(si),
-    si=isNaN(s)?0:s;
+  var cn=parseInt(count);
+  count=isNaN(cn)?50:cn;
+  var s=parseInt(si);
+  si=isNaN(s)?0:s;
 
   //代码执行
   co(handleResult(collectName,queryName,si,count))  
