@@ -54,7 +54,7 @@
             success: function (json) {//客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
                // console.log(json);
                // var rtn=JSON.parse(json);
-                var myLineChart = new Chart(ctx).Line(rtn, options);
+                var myLineChart = new Chart(ctx).Line(json, options);
             },
             error: function(xhr){
                 //jsonp 方式此方法不被触发.原因可能是dataType如果指定为jsonp的话,就已经不是ajax事件了
