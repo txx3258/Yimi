@@ -74,7 +74,7 @@ function* handleResult(collectName,queryName,si,count){
 /*
  *组装返回结果
  */
-function buildResult(labels,data,left,right,tip,desc){
+function buildResult(labels,data,left,right,tip,desc,width,height){
   var data = {
     labels: labels,
     datasets: [{
