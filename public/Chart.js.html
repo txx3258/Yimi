@@ -7,7 +7,10 @@
     <script type="text/javascript" src="http://192.168.11.149:8880/api/jquery-2.2.0.min.js"></script>
 </head>
 <body>
-    <canvas id="myChart" width="5000" height="600"></canvas>
+    <div id="desc" style="height:50px;left:200px;position:fixed"> desc</div>
+    <div id="left" style="position:fixed;top:180px;left:10px">left(ms)</div>
+    <canvas id="myChart" width="5000" height="600" style="margin-left:40px;margin-top:60px"></canvas>
+    <div id="right" style="height:80px;left:600px;position:fixed">2015-09-21</div>
     <script type="text/javascript">
         var ctx = document.getElementById("myChart").getContext("2d");
         var qsData={collectName:"perf_applists",queryName:'{}'};
