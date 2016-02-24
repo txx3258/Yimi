@@ -63,9 +63,9 @@ function* handleResult(collectName,queryName,si,count){
     desc=datas[0].z;
   }
 
-  var cn=parseInt(count);
-  var count=isNaN(cn)?50:cn;
-  var width=count*25;
+  /*var cn=parseInt(count);
+    var count=isNaN(cn)?50:cn;*/
+  var width=3000;
   var height=600;
 
   return buildResult(labels,data,left,right,tip,desc,width,height);
