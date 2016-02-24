@@ -7,7 +7,7 @@
     <script type="text/javascript" src="http://192.168.11.149:8880/api/jquery-2.2.0.min.js"></script>
 </head>
 <body>
-    <canvas id="myChart" width="900" height="400"></canvas>
+    <canvas id="myChart" width="5000" height="600"></canvas>
     <script type="text/javascript">
         var ctx = document.getElementById("myChart").getContext("2d");
         var qsData={collectName:"perf_applists",queryName:'{}'};
@@ -54,7 +54,7 @@
             success: function (json) {//客户端jquery预先定义好的callback函数,成功获取跨域服务器上的json数据后,会动态执行这个callback函数
                // console.log(json);
                // var rtn=JSON.parse(json);
-               // var myLineChart = new Chart(ctx).Line(rtn, options);
+                var myLineChart = new Chart(ctx).Line(rtn, options);
             },
             error: function(xhr){
                 //jsonp 方式此方法不被触发.原因可能是dataType如果指定为jsonp的话,就已经不是ajax事件了
