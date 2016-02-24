@@ -108,7 +108,10 @@ function queryDB(collectName,queryName,si,count){
         logBiz.warn('queryDB:exec is err.err='+err);
         reject(err);
       }else{
-        resolve(result);
+        var rtn=result.map(function(item){
+          return item._doc;
+        })
+        resolve(rtn);
       }
     }) 
   });
