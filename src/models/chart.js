@@ -83,10 +83,10 @@ function queryDB(collectName,queryName,si,count){
     logBiz.warn('queryDB:queryName is null');
   }
   
-  si=parseInt(si),count=parseInt(count);
   si=(!si?0:si);
   count=(!count?50:count);
 
+  si=parseInt(si),count=parseInt(count);
   if (count>1000){
     count=1000;
   }
