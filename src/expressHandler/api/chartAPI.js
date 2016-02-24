@@ -63,7 +63,10 @@ function* handleResult(collectName,queryName,si,count){
     desc=datas[0].z;
   }
 
-  return buildResult(labels,data,left,right,tip,desc);
+  var width=count*25;
+  var height=600;
+
+  return buildResult(labels,data,left,right,tip,desc,width,height);
 }
 
 /*
@@ -85,7 +88,9 @@ function buildResult(labels,data,left,right,tip,desc){
 	  left:left,
 	  right:right,
 	  tip:tip,
-	  desc:desc
+    desc:desc,
+    width:width,
+    height:height 
   };
 
   return data;
