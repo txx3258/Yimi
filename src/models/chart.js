@@ -81,15 +81,7 @@ function queryDB(collectName,queryName,si,count){
 
   if (!queryName){
     logBiz.warn('queryDB:queryName is null');
-  }
-  
-  si=(!si?0:si);
-  count=(!count?50:count);
-
-  si=parseInt(si),count=parseInt(count);
-  if (count>1000){
-    count=1000;
-  }
+  } 
 
   //find(),查询条件
   if (typeof queryName!='object'){
@@ -99,7 +91,7 @@ function queryDB(collectName,queryName,si,count){
   var query=db.model(collectName,Chart).find(queryName);
 
   //sort({id:}),倒序
-  query.sort({id:-1});//.skip(si).limit(count);
+  query.sort({id:-1}).skip(si).limit(count);
 
   return new Promise(function(resolve,reject){
     //exec,执行
