@@ -38,13 +38,13 @@ function connectServer(){
   client.on('end',()=>{
     client=undefined;
     logSys.warn('connect is end');
-  })
+  });
 
   //连接关闭
   client.on('close',()=>{
     client=undefined;
     logSys.warn('connect is close');
-  })
+  });
 }
 
 /**

@@ -1,6 +1,6 @@
 'use strict';
 
-let mongoose=require('mongoose');
+var mongoose=require('mongoose');
 let Schema=mongoose.Schema;
 let logBiz=require('../myLog4js').logBiz;
 let logSys=require('../myLog4js').logSys;
@@ -9,14 +9,14 @@ let connectMongo=require('../mongoHandler/mongoConnect');
 /*
  *模式
  */
-var Chart=new Schema({
+let Chart=new Schema({
   x:String,
   y:String,
   z:String,
   l:String,
   r:String,
   t:String,
-  d:Date,
+  d:Date
 });
 
 /*
@@ -32,7 +32,7 @@ Chart.methods.addPoints=function(point,callback){
     this.d=new Date();
 
     this.save(callback);
-}
+};
 
 var Point=function(point){
   //赋值
@@ -44,7 +44,7 @@ var Point=function(point){
     r:point.r,
     t:point.t,
     d:new Date()
-  }
+  };
 };
 
 /*
@@ -61,14 +61,14 @@ function addDB(points){
 
     its.forEach(function(item){
       let collectName=item.z;
-      db.model(collectName,Chart).create(Point(item),function(err){
+      global.db.model(collectName,Chart).create(Point(item),function(err){
         if (err){
           logSys.warn('mongoose create is err.err='+err+",item="+item);
         }
       });
-    })
-  })
-};
+    });
+  });
+}
 
 /**
  *查询数据
@@ -88,7 +88,7 @@ function queryDB(collectName,queryName,si,count){
     queryName={};
   }
 
-  var query=db.model(collectName,Chart).find(queryName);
+  var query=global.db.model(collectName,Chart).find(queryName);
 
   //sort({id:}),倒序
   query.sort({id:-1}).skip(si).limit(count);
@@ -105,7 +105,7 @@ function queryDB(collectName,queryName,si,count){
           })*/
         resolve(result);
       }
-    }) 
+    });
   });
 }
 
@@ -113,9 +113,25 @@ function queryDB(collectName,queryName,si,count){
  *返回dbModel
  */
 function dbModel(collectName){
-  return db.model(collectName,Chart);
+  return global.db.model(collectName,Chart);
+}
+
+/*
+ *选出所有Collections（show collections)
+ */
+function showCollections(){
+  return new Promise(function(resolve,reject){
+    global.db.collectNames(function(err,names){
+      if (!err){
+        reject('fetch collectNames is err.err='+err);
+      }else{
+        resolve(names);
+      }
+    });
+  });
 }
 
 module.exports.dbModel=dbModel;
 module.exports.addDB=addDB;
 module.exports.queryDB=queryDB;
+module.exports.showCollections=showCollections;

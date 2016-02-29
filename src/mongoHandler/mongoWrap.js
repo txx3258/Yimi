@@ -30,7 +30,7 @@ function addDB(datas){
 
       //插入数据
       addToMongoDB(points);
-    })
+    });
 
   }catch(e){
     logSys.warn('add mongodb err,e='+e);

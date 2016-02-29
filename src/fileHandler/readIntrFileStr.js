@@ -17,7 +17,7 @@ function readIntrFileStr(fd,len,preOffset){
         console.log("send:"+result);
         resolve(result);
       }
-    })
+    });
   });
 }
 

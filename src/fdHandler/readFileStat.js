@@ -13,8 +13,8 @@ let readFileStat=function(fd){
       }else{
         resolve(stats);
       }
-    })
+    });
   });
-}
+};
 
 module.exports=readFileStat;

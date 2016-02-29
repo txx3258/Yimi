@@ -10,8 +10,8 @@ let readFileFd=function(path){
       }else{
         resolve(fd);
       }
-    })
+    });
   });
-}
+};
 
 module.exports=readFileFd;

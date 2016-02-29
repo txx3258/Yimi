@@ -30,7 +30,7 @@ let server=net.createServer(function(socket){
     
     // 单线程确保安全性
     buf=[];
-  })
+  });
 
   //结束
   socket.on('end',function(){

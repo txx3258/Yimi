@@ -39,7 +39,7 @@ function* readFileWrap(item,index){
       "fd":fd,
       "bizCode":item.bizCode,
       "index":index 
-    }
+    };
   }
 }
 

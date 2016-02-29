@@ -34,7 +34,7 @@ function connectMongo(){
 
     resolve(true);
   });
-  })
+  });
 }
 
 module.exports=connectMongo;

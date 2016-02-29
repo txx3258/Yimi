@@ -4,7 +4,7 @@ function gcFileHandler(str,type){
   var result=[],rtn;
 
   //正则表达式
-  var reg=/(\d\d\d\d-\d\d-\d\d)T(\d\d:\d\d:\d\d).*?\[(ParNew: .*?\),(.*?)secs)\]/g
+  var reg=/(\d\d\d\d-\d\d-\d\d)T(\d\d:\d\d:\d\d).*?\[(ParNew: .*?\),(.*?)secs)\]/g;
   while((rtn=reg.exec(str))!=null){ 
       result.push({
         "x":rtn[2],

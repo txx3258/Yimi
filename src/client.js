@@ -93,7 +93,7 @@ function onError(err){
 function main(){
   //没有配置文件，程序结束
   if (!paths||paths.length==0){
-    logIndex.info('paths is null.')
+    logIndex.info('paths is null.');
     process.exit(0);
   }
   

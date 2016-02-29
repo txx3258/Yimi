@@ -35,7 +35,7 @@ let config={
       "category":"biz"
     }
   ]
-}
+};
 
 log4js.configure(config,{});
 
