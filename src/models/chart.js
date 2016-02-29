@@ -121,19 +121,12 @@ function dbModel(collectName){
  */
 function showCollections(){
   return new Promise(function(resolve,reject){
-    global.db.connection.on('open',function(err){
+    global.db.connection.db.collectionNames(function(err,names){
       if (!err){
-        reject('show collections,connection open is err.err='+err);
-        return;
+        reject('fetch collectNames is err.err='+err);
       }else{
-        connection.db.collectNames(function(err,names){
-        if (!err){
-          reject('fetch collectNames is err.err='+err);
-        }else{
-          resolve(names);
-        }
-      })  
-      };
+        resolve(names);
+      }
     });
   });
 }
