@@ -2,7 +2,7 @@
 
 let wrapAPI=require('./wrapAPI');
 let connectMongo=require('../../mongoHandler/mongoConnect');
-let showCollections=require('../../models/chart');
+let showCollections=require('../../models/chart').showCollections;
 
 function handleResult(req,res){
   return function*(){
