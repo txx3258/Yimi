@@ -20,7 +20,8 @@ function connectMongo(){
     if (connectTimes++==3){
       process.exit(0);
     }
-
+    
+    console.log("connect:"+JSON.stringify(mongoose.connection.collections));
     if (err){
       reject(false);
       logSys.warn('mongodb cannot connect!');
