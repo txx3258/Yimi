@@ -121,7 +121,7 @@ function dbModel(collectName){
  */
 function showCollections(){
   return new Promise(function(resolve,reject){
-    global.db.collectNames(function(err,names){
+    global.db.connection.db.collectNames(function(err,names){
       if (!err){
         reject('fetch collectNames is err.err='+err);
       }else{
