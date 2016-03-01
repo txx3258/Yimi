@@ -21,7 +21,6 @@ function connectMongo(){
       process.exit(0);
     }
     
-    console.log("connect:"+JSON.stringify(mongoose.connection.collections));
     if (err){
       reject(false);
       logSys.warn('mongodb cannot connect!');
@@ -35,12 +34,6 @@ function connectMongo(){
 
     resolve(true);
   });
-
-  mongoose.connection.on('open',function(){
-    mongoose.connection.db.collectionNames(function(err,name){
-      console.log('open'+JSON.stringify(name));
-    })
-  })
   });
 }
 
