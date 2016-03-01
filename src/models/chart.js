@@ -126,9 +126,10 @@ function showCollections(){
 */
 setInterval(function(){
   let data=JSON.stringify(allCollections);
+  console.log(data);
 
   fs.writeFile('./all_collections.json',data,(err,data)=>{
-    if (!err){
+    if (err){
       logSys.warn('write all collections is err.err='+err)
     }else{
       logSys.info('write all collections:'+data);
