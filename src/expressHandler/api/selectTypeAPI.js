@@ -25,9 +25,17 @@ function handleResult(req,res){
     let datas=Object.keys(data);
 
     //数据组装
-    let options=datas.filter(function(item){
+    let options=datas.map(function(item){
       if (item.indexOf(type)!=-1){
         return '<option value="'+item+'">'+item+'</option>';
+      }else{
+        return false;
+      }
+    });
+
+    let rtn=options.filter(function(item){
+      if (item){
+        return true;
       }else{
         return false;
       }
