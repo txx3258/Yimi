@@ -6,8 +6,9 @@ let logBiz=require('../myLog4js').logBiz;
 let logSys=require('../myLog4js').logSys;
 let fs=require('fs');
 let allCollections=require('./all_collections');
-
 let connectMongo=require('../mongoHandler/mongoConnect');
+
+let interval=undefined;
 /*
  *模式
  */
@@ -57,6 +58,24 @@ function addDB(points){
       });
     });
   });
+
+  if (!interval){
+/*
+ *记录所有集合
+*/
+interval=setInterval(function(){
+  let data=JSON.stringify(allCollections);
+  console.log(data);
+
+  fs.writeFile('all_collections.json',data,(err,data)=>{
+    if (err){
+      logSys.warn('write all collections is err.err='+err)
+    }else{
+      logSys.info('write all collections:'+data);
+    }
+  })
+},5000);
+  }
 }
 
 /**
@@ -121,21 +140,6 @@ function showCollections(){
   });
 }
 
-/*
- *记录所有集合
-*/
-setInterval(function(){
-  let data=JSON.stringify(allCollections);
-  console.log(data);
-
-  fs.writeFile('./all_collections.json',data,(err,data)=>{
-    if (err){
-      logSys.warn('write all collections is err.err='+err)
-    }else{
-      logSys.info('write all collections:'+data);
-    }
-  })
-},5000);
 
 module.exports.dbModel=dbModel;
 module.exports.addDB=addDB;
