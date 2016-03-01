@@ -12,8 +12,6 @@ function handleResult(req,res){
     let query=req.query;
     let type=query.type;
     let code=query.code;
-
-
     //异步：连接mongo
     //let isCon=yield connectMongo();
     //if (!isCon){
@@ -27,8 +25,12 @@ function handleResult(req,res){
     let datas=Object.keys(data);
 
     //数据组装
-    let options=datas.map(function(item){
-      return '<option value="'+item+'">'+item+'</option>';
+    let options=datas.filter(function(item){
+      if (item.indexOf(type)!=-1){
+        return '<option value="'+item+'">'+item+'</option>';
+      }else{
+        return false;
+      }
     });
 
     return options;

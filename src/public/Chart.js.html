@@ -12,16 +12,21 @@
     <select id="biz_type" name="biz_type" style="float:left"> 
       <option value="gc">gc</option>
       <option value="perf">perf</option>
-      <option value="memcached">memcached</option>
+      
+      <option value="bd_server">bd_server_memcache</option>
+      <option value="client_info">client_info_memcache</option>
+      <option value="comment">comment_memcache</option>
+      <option value="common_server">common_server_memcache</option>
+      <option value="register">register_memcache</option>
+      <option value="subscribe">subscribe_memcache</option>
+      <option value="user_info">user_info_memcache</option>
+      <option value="user_points">user_points_memcache</option>
+
     </select>
 
      <select id="biz_collections" name="biz_collections" style="float:left;margin-left:15px">
-      <option value="gc_applists">gc_applists</option>
     </select>
     
-    <select id="biz_code" name="biz_code" style="float:left;margin-left:15px">
-      <option value="gc_applists">gc_applists</option>
-    </select>
     
     <select id="select_date" name="select_date" style="float:left;margin-left:105px">
       <option value="">日期选择</option>
@@ -68,20 +73,20 @@ $.extend({
   my_ajax_html : function (url,data, container, fn, arg1) {
 		$.ajax({
 			type : "GET", url : url,data:data,dataType:'json'
-			success : function (data) {
+			success : function (result) {
 				if (fn != undefined) {
 					if (arg1 == undefined) {
-						fn(data)
+						fn(result)
 					} else {
 						fn(arg1)
           }
           return;
 				};
-				var index = data.indexOf('redirect_of_mine');
+				var index = result.indexOf('redirect_of_mine');
 				if (index > 0) {
-					window.location.href = data.substring(0, index)
+					window.location.href = result.substring(0, index)
 				} else {
-					$(container).html(data);
+					$(container).html(result.join(''));
 				}
 			},
 			error : function (res, textStatus, thrown) {
