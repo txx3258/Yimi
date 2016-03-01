@@ -5,6 +5,8 @@
     <title></title>
     <script type="text/javascript" src="http://192.168.11.149:8880/api/Chart.min.js"></script>
     <script type="text/javascript" src="http://192.168.11.149:8880/api/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="http://192.168.11.149:8880/api/jquery-ui-1.9.2.custom.min.js"></script>
+    <script type="text/javascript" src="http://192.168.11.149:8880/api/jquery-ui-1.9.2.custom.min.css"></script>
 </head>
 <body>
   <div id="desc" style="height:50px;left:50px;position:fixed"> 
@@ -27,8 +29,10 @@
      <select id="biz_collections" name="collectName" style="float:left;margin-left:15px">
     </select>
     
-    
-    <select id="select_date" name="queryName" style="float:left;margin-left:105px">
+    <div id="datepicker" class="hasDatepicker" style="float:left;margin-left:105px">
+
+    </div>
+    <select id="select_date" name="queryName" >
       <option value="{}">日期选择</option>
     </select>
 
@@ -147,6 +151,10 @@ $("#biz_code").change(function(){
   var data={'code':bizCode};
   $.my_ajax_html(url,data,'#biz_code');
 });
+
+$("#datepicker").datepicker({
+  inline:true
+})
 </script>
 </body>
 </html>
