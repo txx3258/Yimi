@@ -24,15 +24,15 @@
 
     </select>
 
-     <select id="biz_collections" name="biz_collections" style="float:left;margin-left:15px">
+     <select id="biz_collections" name="collectName" style="float:left;margin-left:15px">
     </select>
     
     
-    <select id="select_date" name="select_date" style="float:left;margin-left:105px">
-      <option value="">日期选择</option>
+    <select id="select_date" name="queryName" style="float:left;margin-left:105px">
+      <option value="{}">日期选择</option>
     </select>
 
-    <select id="select_count" name="select_count" style="float:left;margin-left:15px">
+    <select id="select_count" name="count" style="float:left;margin-left:15px">
       <option value="">数量</option>
       <option value="10">10</option>
       <option value="30">30</option>
@@ -41,7 +41,7 @@
       <option value="1000">1000</option> 
     </select>
 
-    <input type="button" style="width:50px;height:30px" value="查询" onclick="doQuery" style="float:left;margin-left:105px"/>
+    <input type="button" value="查询" onclick="doQuery" style="float:left;margin-left:105px;width:50px;height:30px;"/>
     </form>
   </div>
     <div id="left" style="position:fixed;top:180px;left:10px">left(ms)</div>
@@ -98,7 +98,8 @@ $.extend({
 
 //画图
 function paint(data){
-  var url='/api/chart';
+  var url='/api/chart',
+    data=$('#queryCond').serialize();
   var fn=function(json){
       myChart.width=json.width;
       myChart.height=json.height;
