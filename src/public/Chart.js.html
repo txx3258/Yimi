@@ -135,7 +135,7 @@ $("#biz_type").change(function(){
   var bizType=$(this).children('option:selected').val();
   
   var url='/api/fetchBizType';
-  var data={'code':bizType};
+  var data={'type':bizType,'code':'code'};
   $.my_ajax_html(url,data,'#biz_collections')
 });
 
