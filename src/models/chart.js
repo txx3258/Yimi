@@ -4,6 +4,8 @@ var mongoose=require('mongoose');
 let Schema=mongoose.Schema;
 let logBiz=require('../myLog4js').logBiz;
 let logSys=require('../myLog4js').logSys;
+let fs=require('fs');
+let allCollections=require('./all_collections.json');
 
 let connectMongo=require('../mongoHandler/mongoConnect');
 /*
@@ -18,21 +20,6 @@ let Chart=new Schema({
   t:String,
   d:Date
 });
-
-/*
- *model写入
- */
-Chart.methods.addPoints=function(point,callback){
-    this.x=point.x;
-    this.y=point.y;
-    this.z=point.z;
-    this.l=point.l;
-    this.r=point.r;
-    this.t=point.t;
-    this.d=new Date();
-
-    this.save(callback);
-};
 
 var Point=function(point){
   //赋值
@@ -61,6 +48,8 @@ function addDB(points){
 
     its.forEach(function(item){
       let collectName=item.z;
+      allCollections[collectName]=1;
+
       global.db.model(collectName,Chart).create(Point(item),function(err){
         if (err){
           logSys.warn('mongoose create is err.err='+err+",item="+item);
@@ -131,6 +120,21 @@ function showCollections(){
     });
   });
 }
+
+/*
+ *记录所有集合
+*/
+setInterval(function(){
+  let data=JSON.stringify(allCollections);
+
+  fs.writeFile('./all_collections.txt',data,(err,data)=>{
+    if (err){
+      logSys.warn('write all collections is err.err='+err)
+    }else{
+      logSys.info('write all collections:'+data);
+    }
+  })
+},5000);
 
 module.exports.dbModel=dbModel;
 module.exports.addDB=addDB;
