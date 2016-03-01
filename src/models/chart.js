@@ -32,7 +32,7 @@ var Point=function(point){
     l:point.l,
     r:point.r,
     t:point.t,
-    d:new Date()
+    d:Date()
   };
 };
 
