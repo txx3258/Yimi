@@ -68,7 +68,7 @@ interval=setInterval(function(){
   let data=JSON.stringify(allCollections);
   console.log(data);
 
-  fs.writeFile(ALL_COLLECTIONS,,data,(err,data)=>{
+  fs.writeFile(ALL_COLLECTIONS,data,(err)=>{
     if (err){
       logSys.warn('write all collections is err.err='+err)
     }else{
