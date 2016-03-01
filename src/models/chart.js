@@ -5,7 +5,7 @@ let Schema=mongoose.Schema;
 let logBiz=require('../myLog4js').logBiz;
 let logSys=require('../myLog4js').logSys;
 let fs=require('fs');
-let allCollections=require('./all_collections.json');
+let allCollections=require('./all_collections');
 
 let connectMongo=require('../mongoHandler/mongoConnect');
 /*
@@ -127,8 +127,8 @@ function showCollections(){
 setInterval(function(){
   let data=JSON.stringify(allCollections);
 
-  fs.writeFile('./all_collections.txt',data,(err,data)=>{
-    if (err){
+  fs.writeFile('./all_collections.json',data,(err,data)=>{
+    if (!err){
       logSys.warn('write all collections is err.err='+err)
     }else{
       logSys.info('write all collections:'+data);
