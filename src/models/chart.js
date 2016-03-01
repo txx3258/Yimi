@@ -7,6 +7,7 @@ let logSys=require('../myLog4js').logSys;
 let fs=require('fs');
 let allCollections=require('./all_collections');
 let connectMongo=require('../mongoHandler/mongoConnect');
+let ALL_COLLECTIONS=require('../../config.json').ALL_COLLECTIONS;
 
 let interval=undefined;
 /*
