@@ -29,11 +29,7 @@
      <select id="biz_collections" name="collectName" style="float:left;margin-left:15px">
     </select>
     
-    <input id="datepicker" name='date' style="float:left;margin-left:105px;width:80px;height:30px"/>
-
-    <select id="select_date" name="queryName" >
-      <option value="{}">日期选择</option>
-    </select>
+    <input id="datepicker" name='date' style="float:left;margin-left:105px;width:80px;height:20px"/>
 
     <select id="select_count" name="count" style="float:left;margin-left:15px">
       <option value="">数量</option>
@@ -44,11 +40,11 @@
       <option value="1000">1000</option> 
     </select>
 
-    <input type="button" value="查询" onclick="doQuery" style="float:left;margin-left:105px;width:50px;height:30px;"/>
+    <input type="button" value="查询" onclick="doQuery()" style="float:left;margin-left:105px;width:50px;height:30px;"/>
     </form>
   </div>
     <div id="left" style="position:fixed;top:180px;left:10px">left(ms)</div>
-    <canvas id="myChart" width="5000" height="600" style="margin-left:40px;margin-top:60px"></canvas>
+    <canvas id="myChart" width="700" height="500" style="margin-left:40px;margin-top:60px"></canvas>
     <div id="right" style="height:80px;left:600px;position:fixed">2015-09-21</div>
     <script type="text/javascript">
       var myChart=document.getElementById("myChart");
@@ -169,7 +165,7 @@ jQuery(function($){
         dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],  
         dayNamesMin: ['日','一','二','三','四','五','六'],  
         weekHeader: '周',  
-        dateFormat: 'yyyy-mm-dd',  
+        dateFormat: 'yy-mm-dd',  
         firstDay: 1,  
         isRTL: false,  
         showMonthAfterYear: true,  
