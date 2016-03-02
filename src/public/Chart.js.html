@@ -44,11 +44,11 @@
     </form>
   </div>
     <div id="left" style="position:fixed;top:180px;left:10px">left(ms)</div>
-    <canvas id="myChart" width="700" height="500" style="margin-left:40px;margin-top:60px"></canvas>
+    <div id="myChart" width="700" height="500" style="margin-left:40px;margin-top:60px"></div>
+    
     <div id="right" style="height:80px;left:600px;position:fixed">2015-09-21</div>
     <script type="text/javascript">
       var myChart=document.getElementById("myChart");
-      var ctx=myChart.getContext("2d");
         var qsData={collectName:"perf_applists",queryName:'{}'};
         var options={
             scaleShowGridLines : true,
@@ -102,12 +102,15 @@ function paint(data){
   var url='/api/chart',
     data=$('#queryCond').serialize();
     var fn=function(json){
-      if (W_d){
-        ctx.clearRect(0,0,W_d,H_d);
-      }
+      var canvas=document.createElement('canvas');
+      ctx=canvas.getContext("2d");
+
+      myChart.innerHTML=canvas;
       myChart.width=json.width;
       myChart.height=json.height;
 
+      ctx.width=json.width;
+      ctx.height=json.height; 
       W_d=json.width;
       H_d=json.height; 
       new Chart(ctx).Line(json, options);
