@@ -94,15 +94,14 @@ $.extend({
 		})
 	}
 });
-var dd=new Date();
 
-var W_d=undefined,H_d=undefined;
+var W_d=undefined,H_d=undefined,canvas=undefined;
 //画图
 function paint(data){
   var url='/api/chart',
     data=$('#queryCond').serialize();
     var fn=function(json){
-      var canvas=document.createElement('canvas');
+      canvas=document.createElement('canvas');
       canvas.style.width=json.width+'px';
       canvas.style.height='600px'; 
       var ctx=canvas.getContext("2d");
