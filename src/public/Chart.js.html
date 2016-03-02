@@ -103,7 +103,9 @@ function paint(data){
     data=$('#queryCond').serialize();
     var fn=function(json){
       var canvas=document.createElement('canvas');
-      ctx=canvas.getContext("2d");
+      var ctx=canvas.getContext("2d");
+      ctx.width=json.width;
+      ctx.height=json.height; 
       if (myChart.childNodes.length>0){
         myChart.removeChild(myChart.childNodes[0]);
       }
@@ -111,8 +113,6 @@ function paint(data){
       myChart.width=json.width;
       myChart.height=json.height;
 
-      ctx.width=json.width;
-      ctx.height=json.height; 
       W_d=json.width;
       H_d=json.height; 
       new Chart(ctx).Line(json, options);
