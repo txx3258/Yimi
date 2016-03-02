@@ -44,11 +44,11 @@
     </form>
   </div>
     <div id="left" style="position:fixed;top:180px;left:10px">left(ms)</div>
-    <div id="myChart"  style="margin-left:40px;margin-top:60px"></div>
-    
+    <canvas id="myChart" width="700" height="500" style="margin-left:40px;margin-top:60px"></canvas>
     <div id="right" style="height:80px;left:600px;position:fixed">2015-09-21</div>
     <script type="text/javascript">
       var myChart=document.getElementById("myChart");
+      var ctx=myChart.getContext("2d");
         var qsData={collectName:"perf_applists",queryName:'{}'};
         var options={
             scaleShowGridLines : true,
@@ -94,26 +94,19 @@ $.extend({
 		})
 	}
 });
+var dd=new Date();
 
-var W_d=undefined,H_d=undefined,canvas=undefined,my;
+var my;
 //画图
 function paint(data){
   var url='/api/chart',
     data=$('#queryCond').serialize();
     var fn=function(json){
-      canvas=document.createElement('canvas');
-      canvas.style.width=json.width+'px';
-      canvas.style.height='600px'; 
-      var ctx=canvas.getContext("2d");
-      ctx.width=json.width+'px';
-      ctx.height='600px'; 
-      
-      if (myChart.childNodes.length>0){
-        myChart.removeChild(myChart.childNodes[0]);
+      if (my){
+        my.destroy();
       }
-      myChart.appendChild(canvas);
-      myChart.style.width=json.width+'px';
-      myChart.style.height='600px';
+      myChart.width=json.width;
+      myChart.height=json.height;
 
       W_d=json.width;
       H_d=json.height; 
