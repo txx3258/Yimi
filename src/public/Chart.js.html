@@ -104,8 +104,9 @@ function paint(data){
     var fn=function(json){
       var canvas=document.createElement('canvas');
       ctx=canvas.getContext("2d");
-
-      myChart.removeChild();
+      if (myChart.childNodes.length>0){
+        myChart.removeChild();
+      }
       myChart.appendChild(canvas);
       myChart.width=json.width;
       myChart.height=json.height;
