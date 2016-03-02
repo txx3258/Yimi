@@ -14,7 +14,7 @@ function handleResult(req,res){
     //参数组装
     let query=req.query;
     let collectName=query.collectName;
-    let query=query.queryName.trim();
+    let date=query.queryName.trim();
     let si=query.si;
     let count=query.count;
 
@@ -23,8 +23,8 @@ function handleResult(req,res){
     var s=parseInt(si);
     si=isNaN(s)?0:s;
 
-    let sd=new Date(query+' 00:00:00').getTime();
-    let ed=new Date(query+' 23:59:59').getTime();
+    let sd=new Date(date+' 00:00:00').getTime();
+    let ed=new Date(date+' 23:59:59').getTime();
     let queryName={'d':{'$gte':sd,'$lt':ed}};
 
     //异步：连接mongo
