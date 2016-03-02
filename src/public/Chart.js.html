@@ -105,7 +105,7 @@ function paint(data){
       var canvas=document.createElement('canvas');
       ctx=canvas.getContext("2d");
       if (myChart.childNodes.length>0){
-        myChart.removeChild();
+        myChart.removeChild(myChart.childNodes[0]);
       }
       myChart.appendChild(canvas);
       myChart.width=json.width;
