@@ -29,7 +29,7 @@
      <select id="biz_collections" name="collectName" style="float:left;margin-left:15px">
     </select>
     
-    <input id="datepicker" name='queryName' style="float:left;margin-left:105px;width:80px;height:20px"/>
+    <input readonly="readonly"  id="datepicker" name='queryName' style="float:left;margin-left:105px;width:80px;height:20px"/>
 
     <select id="select_count" name="count" style="float:left;margin-left:15px">
       <option value="">数量</option>
@@ -94,15 +94,20 @@ $.extend({
 		})
 	}
 });
+var dd=new Date();
 
 var W_d=undefined,H_d=undefined;
 //画图
 function paint(data){
   var url='/api/chart',
     data=$('#queryCond').serialize();
+    if (!data['queryName']){
+      alert('请选择时间');
+      return;
+    }
     var fn=function(json){
       if (W_d){
-        ctx.clearRect(0,0,W_d,H-d);
+        ctx.clearRect(0,0,W_d,H_d);
       }
       myChart.width=json.width;
       myChart.height=json.height;
@@ -120,16 +125,10 @@ function wrapDate(){
   var date=new Date(),year=date.getFullYear(),
   month=date.getMonth()+1,day=date.getDate();
   month=month>=10?month:'0'+month;
+  day=day>=10?day:'0'+day;
         
-  var dateStr=year+"-"+month+"-",opts=[];
-  for(var i=0;i<5;i++){
-    var tmp=day-0;
-    tmp=tmp>=0?tmp:'0'+tmp;
-    dateStr+=tmp;
-    opts.push('<option value="'+dateStr+'">'+dateStr+'</option>');
-  }
-
-  $("#select_date").append(opts.join(','));
+  var dateStr=year+"-"+month+"-"+day;
+  $("#datepicker").val(dateStr);
 }
 wrapDate();
 
