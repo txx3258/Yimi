@@ -103,17 +103,17 @@ function paint(data){
     data=$('#queryCond').serialize();
     var fn=function(json){
       var canvas=document.createElement('canvas');
-      canvas.style.width=json.width;
-      canvas.style.height=600; 
+      canvas.style.width=json.width+'px';
+      canvas.style.height='600px'; 
       var ctx=canvas.getContext("2d");
       ctx.width=json.width;
-      ctx.height=600; 
+      ctx.height='600px'; 
       if (myChart.childNodes.length>0){
         myChart.removeChild(myChart.childNodes[0]);
       }
       myChart.appendChild(canvas);
-      myChart.style.width=json.width;
-      myChart.style.height=600;
+      myChart.style.width=json.width+'px';
+      myChart.style.height='600px';
 
       W_d=json.width;
       H_d=json.height; 
