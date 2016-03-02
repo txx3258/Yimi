@@ -106,8 +106,11 @@ function paint(data){
       canvas.style.width=json.width+'px';
       canvas.style.height='600px'; 
       var ctx=canvas.getContext("2d");
-      ctx.width=json.width;
+      ctx.width=json.width+'px';
       ctx.height='600px'; 
+      
+      ctx.style.width=json.width+'px';
+      ctx.style.height='600px'; 
       if (myChart.childNodes.length>0){
         myChart.removeChild(myChart.childNodes[0]);
       }
