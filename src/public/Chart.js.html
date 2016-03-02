@@ -104,16 +104,16 @@ function paint(data){
     var fn=function(json){
       var canvas=document.createElement('canvas');
       canvas.style.width=json.width;
-      canvas.style.height=json.height; 
+      canvas.style.height=600; 
       var ctx=canvas.getContext("2d");
       ctx.width=json.width;
-      ctx.height=json.height; 
+      ctx.height=600; 
       if (myChart.childNodes.length>0){
         myChart.removeChild(myChart.childNodes[0]);
       }
       myChart.appendChild(canvas);
       myChart.style.width=json.width;
-      myChart.style.height=json.height;
+      myChart.style.height=600;
 
       W_d=json.width;
       H_d=json.height; 
