@@ -95,13 +95,20 @@ $.extend({
 	}
 });
 
+var W_d=undefined,H_d=undefined;
 //画图
 function paint(data){
   var url='/api/chart',
     data=$('#queryCond').serialize();
-  var fn=function(json){
+    var fn=function(json){
+      if (W_d){
+        ctx.clearRect(0,0,W_d,H-d);
+      }
       myChart.width=json.width;
       myChart.height=json.height;
+
+      W_d=json.width;
+      H_d=json.height; 
       new Chart(ctx).Line(json, options);
   };
 
