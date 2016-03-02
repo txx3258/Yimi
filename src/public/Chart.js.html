@@ -95,7 +95,7 @@ $.extend({
 	}
 });
 
-var W_d=undefined,H_d=undefined,canvas=undefined;
+var W_d=undefined,H_d=undefined,canvas=undefined,my;
 //画图
 function paint(data){
   var url='/api/chart',
@@ -117,7 +117,7 @@ function paint(data){
 
       W_d=json.width;
       H_d=json.height; 
-      new Chart(ctx).Line(json, options);
+      my=new Chart(ctx).Line(json, options);
   };
 
   $.my_ajax_html(url,data,'',fn);
