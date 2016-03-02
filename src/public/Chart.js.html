@@ -103,6 +103,8 @@ function paint(data){
     data=$('#queryCond').serialize();
     var fn=function(json){
       var canvas=document.createElement('canvas');
+      canvas.style.width=json.width;
+      canvas.style.height=json.height; 
       var ctx=canvas.getContext("2d");
       ctx.width=json.width;
       ctx.height=json.height; 
