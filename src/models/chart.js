@@ -20,7 +20,7 @@ let Chart=new Schema({
   l:String,
   r:String,
   t:String,
-  d:Date
+  d:Number
 });
 
 var Point=function(point){
@@ -32,7 +32,7 @@ var Point=function(point){
     l:point.l,
     r:point.r,
     t:point.t,
-    d:Date()
+    d:new Date().getTime()
   };
 };
 
