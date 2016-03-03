@@ -1,5 +1,7 @@
 'use strict';
 
+let MIN_LIMIT=require('../../config').MIN_LIMIT; 
+
 function perfFileHandler(str){
   var result=[],rtn,i=0;
   var date=new Date(),
@@ -11,7 +13,7 @@ function perfFileHandler(str){
   //正则表达式
   var reg=/\|Y\|(\d+)\|(GET|POST)\|\/(\w+)(\/\w+\/\w+)/mg;
   while((rtn=reg.exec(str))!=null){
-    if (rtn[1]>=10){
+    if (rtn[1]>=MIN_LIMIT){
       
       result.push({
         "x":timeStr,
