@@ -20,7 +20,7 @@ function perfFileHandler(str){
         'y':rtn[1],
         'z':'perf_'+rtn[3],
         'l':'ms',
-        'r':'',
+        'r':'date',
         't':rtn[2]+rtn[4]
       });
       

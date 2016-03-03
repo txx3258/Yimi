@@ -10,8 +10,8 @@ function gcFileHandler(str,type){
         "x":rtn[2],
         'y':rtn[4],
         'z':'gc_'+type,
-        'r':'secs',
-        'l':rtn[1],
+        'l':'secs',
+        'r':'date',
         't':rtn[3]
       }); 
   }

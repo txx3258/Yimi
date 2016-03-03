@@ -14,8 +14,8 @@ function memcachedHandler(str,type){
         "x":date.toLocaleTimeString(),
         'y':rn.maxCost,
         'z':rn.bizCode+"_"+rn.systemCode+"_"+rn.envCode+"@"+rn.roleName+":"+rn.methName+"@"+rn.serverHost,
-        'l':date.toLocaleDateString(),
-        'r':'ms',
+        'r':'date',
+        'l':'ms',
         't':JSON.stringify(rn.costGroup)
       }); 
   }

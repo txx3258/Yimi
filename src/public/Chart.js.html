@@ -46,6 +46,8 @@
     <div id="left" style="position:fixed;top:180px;left:10px">left(ms)</div>
     <canvas id="myChart" width="700" height="500" style="margin-left:40px;margin-top:60px"></canvas>
     <div id="right" style="height:80px;left:600px;position:fixed">2015-09-21</div>
+
+    <table id="detail">  </table>
     <script type="text/javascript">
       var myChart=document.getElementById("myChart");
       var ctx=myChart.getContext("2d");
@@ -105,15 +107,27 @@ function paint(data){
       if (my){
         my.destroy();
       }
+
       myChart.width=json.width;
       myChart.height=json.height;
-
-      W_d=json.width;
-      H_d=json.height; 
       my=new Chart(ctx).Line(json, options);
+
+      $("#left").html(json.right);
+      $("#right").html(json.left);
+
+      dumpTable(json.tip,json.datasets[0].data);
   };
 
   $.my_ajax_html(url,data,'',fn);
+
+  function dumpTable(tip,data){
+    var len=tip.length,datas=[];
+    for(var i=0;i<len;i++){
+      datas.push('<th><td>'+tip[i]+'</td><td>'+data[i]+'</td></th>');
+    }
+
+    $('#detial').html(datas.join(''));
+  }
 }
 
 //构建日期
