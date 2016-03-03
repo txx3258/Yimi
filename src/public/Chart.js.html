@@ -122,7 +122,7 @@ function paint(data){
   function dumpTable(tip,data){
     var len=tip.length,datas=[];
     for(var i=0;i<len;i++){
-      datas.push('<th><td>'+tip[i]+'</td><td>'+data[i]+'</td></th>');
+      datas.push('<tr><td>'+tip[i]+'</td><td>'+data[i]+'</td></tr>');
     }
 
     var rtn='<table>'+datas.join('')+'</table>';
