@@ -18,6 +18,8 @@
   "OFFSET":0,
   "IP":"127.0.0.1",
   "PORT":9991,
+  "ALL_COLLECTIONS":"",
+  "MIN_LIMIT":10,
   "MONGO_URI":"mongodb://user:pass@IP:port/database",
   "INTERVAL":60000
 }
