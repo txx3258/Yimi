@@ -47,7 +47,7 @@
     <canvas id="myChart" width="700" height="500" style="margin-left:40px;margin-top:60px"></canvas>
     <div id="right" style="height:80px;left:600px;position:fixed">2015-09-21</div>
 
-    <table id="detail">  </table>
+    <div id="detail">  </div>
     <script type="text/javascript">
       var myChart=document.getElementById("myChart");
       var ctx=myChart.getContext("2d");
@@ -125,7 +125,10 @@ function paint(data){
       datas.push('<th><td>'+tip[i]+'</td><td>'+data[i]+'</td></th>');
     }
 
-    $('#detail').html(datas.join(''));
+    var rtn='<table>'+datas.join('')+'</table>';
+    console.log(rtn);
+
+    $('#detail').html(rtn);
   }
 }
 
