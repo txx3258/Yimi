@@ -45,6 +45,13 @@ function connectServer(){
     client=undefined;
     logSys.warn('connect is close');
   });
+
+  //处理错误
+  client.on('error',function(err){
+    connectTimes++;
+    logSys.warn('error:'+err);
+    setTimeout(createServer,60000*(connectTimes<<3))
+  });
 }
 
 /**

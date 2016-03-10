@@ -15,12 +15,15 @@ let interval=undefined;
  */
 let Chart=new Schema({
   x:String,
-  y:String,
+  y:Number,
   z:String,
   l:String,
   r:String,
   t:String,
-  d:Number
+  d:{
+    type:Number,
+    index:true
+  }
 });
 
 var Point=function(point){
