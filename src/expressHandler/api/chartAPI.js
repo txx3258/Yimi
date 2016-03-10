@@ -17,6 +17,7 @@ function handleResult(req,res){
     let date=query.queryName.trim();
     let si=query.si;
     let count=query.count;
+    let filterNum=query.filterNum;
 
     let cn=parseInt(count);
     count=isNaN(cn)?50:cn;
@@ -34,7 +35,7 @@ function handleResult(req,res){
     }
 
     //异步: 查询mongo
-    let datas=yield queryDB(collectName,queryName,si,count);
+    let datas=yield queryDB(collectName,queryName,si,counti,filterNum);
   
     let labels=[],data=[],left='',right='',tip=[],desc='';
 

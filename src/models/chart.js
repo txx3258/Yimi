@@ -85,7 +85,7 @@ interval=setInterval(function(){
 /**
  *查询数据
  */
-function queryDB(collectName,queryName,si,count){
+function queryDB(collectName,queryName,si,count,filterNum){
   if (!collectName){
     logBiz.warn('queryDB:collectName is null');
     return;
@@ -98,6 +98,10 @@ function queryDB(collectName,queryName,si,count){
   //find(),查询条件
   if (typeof queryName!='object'){
     queryName={};
+  }
+
+  if (filterNum){
+    queryName["y"]={"$gte":filterNum};
   }
 
   var query=global.db.model(collectName,Chart).find(queryName);

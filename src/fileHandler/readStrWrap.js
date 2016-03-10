@@ -20,7 +20,7 @@ function* readStrWrap(wrap){
     case 'memcached':fn=memcachedHandler;break;
     case 'dal':fn=dalFileHandler;break;
     case 'gc':fn=gcFileHandler;break;
-    case 'rpc':fn=require('./rpcFileHandler');break;
+    case 'rpc':fn=dalFileHandler;break;
   }
 
   if (!fn){
