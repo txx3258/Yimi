@@ -13,7 +13,7 @@ let logSys = myLog4js.logSys;
  */
 let readFileInfo = require('./fileService/readFileInfo');
 let readFileContent = require('./fileService/readFileContent');
-let sendData = require('./tcpServer/tcpConnect');
+let sendData = require('./tcpService/sendData');
 let paths = config.PATHS;
 
 /*
