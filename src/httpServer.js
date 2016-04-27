@@ -7,8 +7,8 @@ var config=require('../config');
 var logSys=require('./common/log').logSys;
 
 
-var chart=require('./expressHandler/router/chart');
-app.set('views', path.join(__dirname, 'expressHandler/views'));
+var chart=require('./webService/router/chart');
+app.set('views', path.join(__dirname, 'webService/views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname,'./static')));
 

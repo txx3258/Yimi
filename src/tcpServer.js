@@ -1,7 +1,7 @@
 'use strict';
 
 let net = require('net');
-let PORT = require('../config').PORT;
+let PORT = require('../config').TCP_SERVER_PORT;
 let addDB = require('./mongoService/op').addDB;
 
 let server = net.createServer(function (socket) {
