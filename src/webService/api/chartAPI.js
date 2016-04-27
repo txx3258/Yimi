@@ -1,11 +1,11 @@
 'use strict';
 
 let co=require('co');
-let connectMongo=require('../../mongoHandler/mongoConnect');
+let connect=require('../../mongoService/op').connect;
 let model=require('../../models/chart');
 let queryDB=model.queryDB;
 let dbModel=model.dbModel;
-let mongoDisconn=require('../../mongoHandler/mongoDisconn');
+//let mongoDisconn=require('../../mongoHandler/mongoDisconn');
 /*
  *访问图形数据API
  */
@@ -29,7 +29,7 @@ function handleResult(req,res){
     let queryName={'d':{'$gte':sd,'$lt':ed}};
 
     //异步：连接mongo
-    let isCon=yield connectMongo();
+    let isCon=yield connect();
     if (!isCon){
       throw new Error('can not connect mongo');
     }

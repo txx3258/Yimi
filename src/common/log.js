@@ -17,19 +17,19 @@ let config={
     },
     {
       "type":"file",
-      "filename":"../../logs/server.log",
+      "filename":"../logs/server.log",
       "maxLogSize":2048,
       "backups":2,
       "category":"index"
     },{
       "type":"file",
-      "filename":"../../logs/sys.log",
+      "filename":"../logs/sys.log",
       "maxLogSize":204800,
       "backups":2,
       "category":"sys"
     },{
       "type":"file",
-      "filename":"../../logs/biz.log",
+      "filename":"../logs/biz.log",
       "maxLogSize":2048000,
       "backups":2,
       "category":"biz"
