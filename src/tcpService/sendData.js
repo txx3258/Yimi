@@ -50,7 +50,7 @@ function connectServer(){
   client.on('error',function(err){
     connectTimes++;
     logSys.warn('error:'+err);
-    setTimeout(createServer,60000*(connectTimes<<3))
+    setTimeout(connectServer,60000*(connectTimes<<3))
   });
 }
 

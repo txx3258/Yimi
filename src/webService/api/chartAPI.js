@@ -2,7 +2,7 @@
 
 let co=require('co');
 let connect=require('../../mongoService/op').connect;
-let model=require('../../models/chart');
+let model=require('../../mongoService/models/chart');
 let queryDB=model.queryDB;
 let dbModel=model.dbModel;
 //let mongoDisconn=require('../../mongoHandler/mongoDisconn');
