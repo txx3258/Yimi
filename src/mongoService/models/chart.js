@@ -2,8 +2,8 @@
 
 var mongoose=require('mongoose');
 let Schema=mongoose.Schema;
-let logBiz=require('../common/log').logBiz;
-let logSys=require('../common/log').logSys;
+let logBiz=require('../../common/log').logBiz;
+let logSys=require('../../common/log').logSys;
 
 let fs=require('fs');
 let allCollections=require('./all_collections');
