@@ -8,7 +8,7 @@ let connectTimes = 0;
 let logSys = require('../common/log').logSys;
 let logBiz = require('../common/log').logBiz;
 //引入model 
-let addToMongoDB = require('../models/chart').addDB;
+let addToMongoDB = require('./models/chart').addDB;
 
 /*
  *连接mongodb
