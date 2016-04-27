@@ -7,7 +7,7 @@ let logSys = require('../../common/log').logSys;
 
 let fs = require('fs');
 let allCollections = require('./all_collections');
-let ALL_COLLECTIONS = require('../../config.json').ALL_COLLECTIONS;
+let ALL_COLLECTIONS = require('../../../config.json').ALL_COLLECTIONS;
 
 let interval = undefined;
 /*
