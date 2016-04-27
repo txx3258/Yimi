@@ -2,7 +2,8 @@
   "PATHS":[{
       "path":"/Users/soft_tangxiaoxian/Desktop/tmp/Yimi/src/fileHandler/test/ams-memcached-monitor.log",
       "type":"memcached",
-      "offset":0
+      "offset":0,
+      "bufSize":100000
     },{
       "path": "/Users/soft_tangxiaoxian/Desktop/tmp/Yimi/src/fileHandler/test/amsnew-perf.log",
       "type": "perf",
@@ -11,6 +12,7 @@
       "path":"/gc.log",
       "type":"gc",
       "offset":0,
+       "bufSize":100000,
       "bizCode":"applist"
     }
   ],

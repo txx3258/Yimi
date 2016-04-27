@@ -2,7 +2,7 @@
 
 let net = require('net');
 let PORT = require('../config').PORT;
-let insertMongoDB = require('./mongoHandler/mongoWrap');
+let addDB = require('./mongoService/op').addDB;
 
 let server = net.createServer(function (socket) {
   socket.setEncoding('utf8');
@@ -26,9 +26,9 @@ let server = net.createServer(function (socket) {
     }
 
     //添加到数据库
-    insertMongoDB(buf);
+    addDB(buf);
 
-    // 单线程确保安全性
+    // 单线程能确保安全性
     buf = [];
   });
 

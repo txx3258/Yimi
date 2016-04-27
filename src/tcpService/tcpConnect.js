@@ -6,7 +6,7 @@ let client=undefined;
 
 let IP=require('../../config.json').IP;
 let PORT=require('../../config.json').PORT;
-let logSys=require('../myLog4js').logSys;
+let logSys=require('../common/log').logSys;
 //连接次数记录
 let connectTimes=0;
 
