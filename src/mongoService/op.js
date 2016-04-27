@@ -81,6 +81,9 @@ function disConnect(model){
   }
 }
 
+//加载就执行
+connect();
+
 module.exports = {
     "connect": connect,
     "addDB": addDB,
