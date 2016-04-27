@@ -17,19 +17,19 @@ let config={
     },
     {
       "type":"file",
-      "filename":"../logs/server.log",
+      "filename":"../../logs/server.log",
       "maxLogSize":2048,
       "backups":2,
       "category":"index"
     },{
       "type":"file",
-      "filename":"../logs/sys.log",
+      "filename":"../../logs/sys.log",
       "maxLogSize":204800,
       "backups":2,
       "category":"sys"
     },{
       "type":"file",
-      "filename":"../logs/biz.log",
+      "filename":"../../logs/biz.log",
       "maxLogSize":2048000,
       "backups":2,
       "category":"biz"
@@ -39,14 +39,12 @@ let config={
 
 log4js.configure(config,{});
 
-let logBiz=log4js.getLogger('biz'),
-  logIndex=log4js.getLogger('index'),
-  logSys=log4js.getLogger('sys');
+let logBiz=log4js.getLogger('biz');
+let logIndex=log4js.getLogger('index')
+let logSys=log4js.getLogger('sys');
 
-module.exports.logBiz=logBiz;
-module.exports.logIndex=logIndex;
-module.exports.logSys=logSys;
-
-
-
-
+module.exports={
+  logBiz:logBiz,
+  logIndex:logIndex,
+  logSys:logSys
+};

@@ -3,13 +3,13 @@
 let co=require('co');
 
 let config=require('../config.json');
-let myLog4js=require('./myLog4js');
-let logIndex=myLog4js.logIndex,
-    logBiz=myLog4js.logBiz,
-    logSys=myLog4js.logSys;
+let myLog4js=require('./common/log');
+let logIndex=myLog4js.logIndex;
+let logBiz=myLog4js.logBiz;
+let logSys=myLog4js.logSys;
 
 /*
- *引入异步代码处理块
+ *引入异步代码处理块 
  */
 let readFileWrap=require('./fdHandler/readFileWrap');
 let readStrWrap=require('./fileHandler/readStrWrap');
@@ -100,10 +100,11 @@ function main(){
   doBiz();
 }
 
+//执行
 main();
 
 /*
  *定期处理
- */
+*/
 setInterval(doBiz,config.INTERVAL);
 

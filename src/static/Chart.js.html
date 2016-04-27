@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="http://192.168.11.149:8880/api/jq/jquery-ui.css"/>
+    <script type="text/javascript" src="http://192.168.11.149:8880/api/Chart.min.js"></script>
+    <script type="text/javascript" src="http://192.168.11.149:8880/api/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="http://192.168.11.149:8880/api/jq/jquery-ui.js"></script>
+</head>
+<body>
+  <div id="desc" style="height:50px;left:50px;position:fixed"> 
+    <form id="queryCond"> 
+    <select id="biz_type" name="biz_type" style="float:left"> 
+      <option value="gc">gc</option>
+      <option value="perf">perf</option>
+      
+      <option value="bd_server">bd_server_memcache</option>
+      <option value="client_info">client_info_memcache</option>
+      <option value="comment">comment_memcache</option>
+      <option value="common_server">common_server_memcache</option>
+      <option value="register">register_memcache</option>
+      <option value="subscribe">subscribe_memcache</option>
+      <option value="user_info">user_info_memcache</option>
+      <option value="user_points">user_points_memcache</option>
+
+    </select>
+
+     <select id="biz_collections" name="collectName" style="float:left;margin-left:15px">
+    </select>
+    
+    <input readonly="readonly"  id="datepicker" name='queryName' style="float:left;margin-left:85px;width:80px;height:20px"/>
+
+    <select id="select_count" name="count" style="float:left;margin-left:15px">
+      <option value="">数量</option>
+      <option value="10">10</option>
+      <option value="30">30</option>
+      <option value="50">50</option>
+      <option value="100">100</option>
+      <option value="1000">1000</option> 
+    </select>
+
+    <input name="filterNum" type="text" value="" placeholder="过滤大小(数字)" style="float:left;margin-left:15px;width:60px;height:20px;"/>
+    <input type="button" value="查询" onclick="doQuery()" style="float:left;margin-left:105px;width:50px;height:30px;"/>
+    </form>
+  </div>
+    <div id="left" style="position:fixed;top:180px;left:10px">left(ms)</div>
+    <canvas id="myChart" width="700" height="500" style="margin-left:40px;margin-top:60px"></canvas>
+    <div id="right" style="height:80px;left:600px;position:fixed">2015-09-21</div>
+
+    <div id="detail">  </div>
+    <script type="text/javascript">
+      var myChart=document.getElementById("myChart");
+      var ctx=myChart.getContext("2d");
+        var qsData={collectName:"perf_applists",queryName:'{}'};
+        var options={
+            scaleShowGridLines : true,
+            scaleGridLineColor : "rgba(0,0,0,.05)",
+            scaleGridLineWidth : 1,
+            scaleShowHorizontalLines: true,
+            scaleShowVerticalLines: true,
+            bezierCurve : true,
+            bezierCurveTension : 0.4,
+            pointDot : true,
+            pointDotRadius : 4,
+            pointDotStrokeWidth : 1,
+            pointHitDetectionRadius : 20,
+            datasetStroke : true,
+            datasetStrokeWidth : 2,
+            datasetFill : true,
+            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:red\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+        };
+
+$.extend({
+  my_ajax_html : function (url,data, container, fn, arg1) {
+		$.ajax({
+			type : "GET", url : url,data:data,dataType:'json',
+			success : function (result) {
+				if (fn != undefined) {
+					if (arg1 == undefined) {
+						fn(result)
+					} else {
+						fn(arg1)
+          }
+          return;
+				};
+				var index = result.indexOf('redirect_of_mine');
+				if (index > 0) {
+					window.location.href = result.substring(0, index)
+				} else {
+					$(container).html(result.join(''));
+				}
+			},
+			error : function (res, textStatus, thrown) {
+				alert("error:"+res.status);
+			}
+		})
+	}
+});
+
+var my;
+//画图
+function paint(data){
+  var url='/api/chart',
+    data=$('#queryCond').serialize();
+    var fn=function(json){
+      if (my){
+        my.destroy();
+      }
+
+      myChart.width=json.width;
+      myChart.height=json.height;
+      my=new Chart(ctx).Line(json, options);
+
+      $("#left").html(json.right);
+      $("#right").html(json.left);
+
+      dumpTable(json.tip,json.datasets[0].data);
+  };
+
+  $.my_ajax_html(url,data,'',fn);
+
+  function dumpTable(tip,data){
+    var len=tip.length,datas=[];
+    for(var i=0;i<len;i++){
+      datas.push('<tr><td>'+tip[i]+'</td><td>'+data[i]+'</td></tr>');
+    }
+
+    var rtn='<table>'+datas.join('')+'</table>';
+    console.log(rtn);
+
+    $('#detail').html(rtn);
+  }
+}
+
+//构建日期
+function wrapDate(){
+  var date=new Date(),year=date.getFullYear(),
+  month=date.getMonth()+1,day=date.getDate();
+  month=month>=10?month:'0'+month;
+  day=day>=10?day:'0'+day;
+        
+  var dateStr=year+"-"+month+"-"+day;
+  $("#datepicker").val(dateStr);
+}
+wrapDate();
+
+//点击查询
+function doQuery(){
+  paint();
+}
+
+$("#biz_type").change(function(){
+  var bizType=$(this).children('option:selected').val();
+  
+  var url='/api/fetchBizType';
+  var data={'type':bizType,'code':'code'};
+  $.my_ajax_html(url,data,'#biz_collections')
+});
+
+$("#biz_code").change(function(){
+  var bizCode=$(this).children('option:selected').val();
+
+  var url='/api/fetchBizCode';
+  var data={'code':bizCode};
+  $.my_ajax_html(url,data,'#biz_code');
+});
+
+$("#datepicker").datepicker({
+  inline:true
+})
+
+jQuery(function($){  
+    $.datepicker.regional['zh-CN'] = {  
+        closeText: '关闭',  
+        prevText: '<上月',  
+        nextText: '下月>',  
+        currentText: '今天',  
+        monthNames: ['一月','二月','三月','四月','五月','六月',  
+        '七月','八月','九月','十月','十一月','十二月'],  
+        monthNamesShort: ['一','二','三','四','五','六',  
+        '七','八','九','十','十一','十二'],  
+        dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],  
+        dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],  
+        dayNamesMin: ['日','一','二','三','四','五','六'],  
+        weekHeader: '周',  
+        dateFormat: 'yy-mm-dd',  
+        firstDay: 1,  
+        isRTL: false,  
+        showMonthAfterYear: true,  
+        yearSuffix: '年'};  
+    $.datepicker.setDefaults($.datepicker.regional['zh-CN']);  
+}); 
+</script>
+</body>
+</html>
