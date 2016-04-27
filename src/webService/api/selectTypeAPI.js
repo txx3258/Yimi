@@ -1,8 +1,8 @@
 'use strict';
 
 let wrapAPI=require('./wrapAPI');
-let connectMongo=require('../../mongoHandler/mongoConnect');
-let showCollections=require('../../models/chart').showCollections;
+let connect=require('../../mongoService/op').connect;
+let showCollections=require('../../mongoService/models/chart').showCollections;
 
 let fs=require('fs');
 let ALL_COLLECTIONS=require('../../../config').ALL_COLLECTIONS;
