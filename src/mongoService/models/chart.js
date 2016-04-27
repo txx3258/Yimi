@@ -150,7 +150,9 @@ function showCollections(){
 }
 
 
-module.exports.dbModel=dbModel;
-module.exports.addDB=addDB;
-module.exports.queryDB=queryDB;
-module.exports.showCollections=showCollections;
+module.exports={
+  "dbModel":dbModel,
+  "addDB":addDB,
+  "queryDB":queryDB,
+  "showCollections":showCollections
+};

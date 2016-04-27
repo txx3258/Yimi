@@ -60,7 +60,6 @@ function* bizCode() {
 
   //读取新增文件字符串
   let readFileContents = handleInfos.map(function (info) {
-
     return readFileContent(info);
   });
 

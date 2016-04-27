@@ -61,11 +61,9 @@ function addDB(datas) {
         //数据库写入缓慢时，可能接收到多份数据
         datas.forEach(function (data) {
             var points = JSON.parse(data);
-
             //插入数据
             addToMongoDB(points);
         });
-
     } catch (e) {
         logSys.warn('add mongodb err,e=' + e);
         logBiz.warn('data parse json wrong:' + datas);
