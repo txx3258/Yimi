@@ -1,2 +1,4 @@
-wget https://codeload.github.com/txx3258/Yimi/zip/master/
-<h1>Project for Monitor </h1>
+1、创建时间：2017-02-17 09:40
+2、创建目的：团队学习资源共享
+3、提交人：唐孝先
+4、地点：成都高新区天府软件园c12
